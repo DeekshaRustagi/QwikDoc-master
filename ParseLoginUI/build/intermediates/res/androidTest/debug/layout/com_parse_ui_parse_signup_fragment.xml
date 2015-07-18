@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content" >
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:weightSum="1">
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView"
+            android:layout_weight="1" />
+
+        <RadioGroup
+            android:id="@+id/signup_radio_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="I am a patient"
+                android:id="@+id/patient"
+                android:checked="false" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="I am a doctor"
+                android:id="@+id/doctor"
+                android:layout_gravity="center_horizontal"
+                android:checked="false" />
+
+        </RadioGroup>
+        <EditText
+            android:id="@+id/signup_username_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/ParseLoginUI.EditText"
+            android:hint="@string/com_parse_ui_username_input_hint"></EditText>
+
+        <EditText
+            android:id="@+id/signup_password_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/ParseLoginUI.EditText"
+            android:layout_marginTop="@dimen/com_parse_ui_small_vertical_spacing"
+            android:fontFamily="sans-serif"
+            android:hint="@string/com_parse_ui_password_input_hint"
+            android:inputType="textPassword"
+            android:selectAllOnFocus="true" />
+
+        <EditText
+            android:id="@+id/signup_confirm_password_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/ParseLoginUI.EditText"
+            android:layout_marginTop="@dimen/com_parse_ui_small_vertical_spacing"
+            android:fontFamily="sans-serif"
+            android:hint="@string/com_parse_ui_confirm_password_input_hint"
+            android:inputType="textPassword"
+            android:selectAllOnFocus="true" />
+
+        <EditText
+            android:id="@+id/signup_email_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/ParseLoginUI.EditText"
+            android:layout_marginTop="@dimen/com_parse_ui_small_vertical_spacing"
+            android:hint="@string/com_parse_ui_email_input_hint"
+            android:inputType="textEmailAddress" />
+
+        <EditText
+            android:id="@+id/signup_name_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/ParseLoginUI.EditText"
+            android:layout_marginTop="@dimen/com_parse_ui_small_vertical_spacing"
+            android:hint="@string/com_parse_ui_name_input_hint"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/signup_contactnumber_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/ParseLoginUI.EditText"
+            android:layout_marginTop="@dimen/com_parse_ui_small_vertical_spacing"
+            android:hint="Contact Number"
+            android:inputType="textPersonName" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+                <EditText
+                android:layout_width="315dp"
+                android:layout_height="49dp"
+                style="@style/ParseLoginUI.EditText"
+                android:id="@+id/signup_DOB"
+                android:hint="Date of Birth"
+               android:editable="false" />
+
+            <ImageButton
+                android:layout_width="54dp"
+                android:layout_height="54dp"
+                android:layout_weight="0"
+                android:text="Set Date"
+                android:layout_margin="5dp"
+                android:id="@+id/date_picker"
+                android:layout_gravity="center"
+                android:background="@drawable/date"
+                android:textColor="@android:color/white">
+
+            </ImageButton>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="367dp"
+            android:layout_height="29dp"
+            android:text="Receiver reminders by:"
+            android:id="@+id/remindertext"
+            android:textSize="18dp" />
+
+        <CheckBox
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SMS"
+            android:id="@+id/SMS"
+            android:checked="true"
+            />
+
+        <CheckBox
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Email"
+            android:id="@+id/Email"
+            android:checked="true"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <Spinner
+                android:id="@+id/doctor_specialty"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/com_parse_ui_small_vertical_spacing"
+                />
+
+
+            <Spinner
+
+                android:id="@+id/doctor_branch"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="8dp"
+                />
+
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/create_account"
+            style="@style/ParseLoginUI.Button"
+            android:layout_marginTop="@dimen/com_parse_ui_small_vertical_spacing"
+            android:text="@string/com_parse_ui_create_account_button_label"
+            android:textColor="#ffffffff"
+            android:background="#ff2322e0"/>
+
+    </LinearLayout>
+</ScrollView><!-- From: file:/Users/srishti/Downloads/QwikDoc/ParseLoginUI/res/layout/com_parse_ui_parse_signup_fragment.xml --><!-- From: file:/Users/srishti/Downloads/QwikDoc/ParseLoginUI/build/intermediates/bundles/debug/res/layout/com_parse_ui_parse_signup_fragment.xml -->

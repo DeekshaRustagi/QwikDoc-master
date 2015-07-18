@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Please put your application's app ID and keys here -->
+    <string name="parse_app_id">fy6pssHTsXWaMT9xaeYHNNoRs1hikeVvoongkvuM</string>
+    <string name="parse_client_key">d3x9dWWYaBfOFa2jMqpVf4ZEwKDyFToAOTcNsd95</string>
+    <string name="facebook_app_id">437977986379738</string>
+    <string name="twitter_consumer_key">kgGE1YO9z5O54nqVszgl8ygxu</string>
+    <string name="twitter_consumer_secret">UfxrnkacWgI1FY0ljbh0a7zaZdnymT4p1WPg0Aci9xF6tRbBK1</string>
+
+    <string name="app_name">Mojojo</string>
+    <string name="profile_logo_content_description">Logo</string>
+    <string name="profile_title_logged_in">Your are logged in as %1$s</string>
+    <string name="profile_logout_button_label">Log out</string>
+    <string name="profile_title_logged_out">You must be logged in to view your profile</string>
+    <string name="profile_login_button_label">Log in</string>
+    <string name="title_activity_appointment_ui">AppointmentUI</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_registration">Registration</string>
+
+    <string name="openDrawer">Hello world!</string>
+    <string name="closeDrawer">Settings</string>
+    <string name="pre_assessment_needed">Fulfill your pre-assessment needs</string>
+
+
+
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
+    <string name="title_activity_profile">Profile</string>
+    <string name="title_activity_search__doctor">Search_Doctor</string>
+    <string name="title_activity_upcomming_appointment">UpcommingAppointment</string>
+    <string name="title_activity_edit__profile">Edit_Profil</string>
+    <string name="title_activity_main">QwikDoc</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="qwiksearch">QwikSearch</string>
+    <string name="logout">Log Out</string>
+    <string name="profile">My Profile</string>
+    <string name="leaves">Leaves</string>
+    <string name="scheduled_appointments">Scheduled Appointments</string>
+    <string name="patient_medical_records">Search</string>
+
+
+
+
+    <string name="user_name">Name</string>
+    <string name="email_id">Username (Email id)</string>
+    <string name="submit">Submit</string>
+    <string name="enter_name">Please Enter Name</string>
+    <string name="enter_password">Please Enter password</string>
+    <string name="select_type">Select type of user</string>
+
+    <string name="enter_email">Please enter an email address</string>
+    <string name="hello_blank_fragment">Settings</string>
+    <string name="user_uid">UserID</string>
+    <string name="new_password">New Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="old_password">Old Password</string>
+    <string name="password">Password</string>
+
+    <string name="email">Email</string>
+
+    <string name="user_password">Password</string>
+
+
+    <!-- Content Description -->
+    <string name="desc_list_item_icon">Item Icon</string>
+
+
+    <string name="appointment_created">Your appointment has been booked!</string>
+    <string name="leave_type">Type of leave</string>
+
+
+
+    <string name="medical_issue">Medical Issue</string>
+    <string name="notes">notes</string>
+    <string name="title_activity_patient_home_screen">PatientHomeScreen</string>
+
+    <string-array name="leave_type_array">
+        <item>Short Leave</item>
+    <item>Half Day</item>
+    <item>Full Day</item>
+
+</string-array>
+
+
+    <string name="tab_date">Set Date</string>
+    <string name="tab_time">Set Time</string>
+
+
+
+
+</resources>

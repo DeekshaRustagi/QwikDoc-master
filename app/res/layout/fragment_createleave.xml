@@ -1,0 +1,184 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="main.java.cz2006project.mojojo.Boundary.Leaves.CreateLeaveFragment"
+    android:scrollbarAlwaysDrawVerticalTrack="true">
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="7"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                >
+                <Spinner
+                    android:id="@+id/typespinner"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:hint="@string/appointment_type"
+                    />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                >
+                <Spinner
+                    android:id="@+id/clinicspinner"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:hint="@string/clinic_name"
+                />
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                >
+                <Spinner
+                    android:id="@+id/doctorspinner"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:hint="@string/doctor_name"
+                    android:longClickable="false"
+                    android:spinnerMode="dialog"
+                    android:textSize="20sp"
+                    android:touchscreenBlocksFocus="false"
+                    android:minHeight="30dp"/>
+
+
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                >
+
+                <main.java.cz2006project.mojojo.Entity.Utils.MaterialEditText
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:id="@+id/appointment_date"
+                    android:hint="click on date"
+                    android:layout_margin="10dp"
+                    android:editable="false"
+                    />
+                <ImageButton
+                    android:layout_width="54dp"
+                    android:layout_height="54dp"
+                    android:layout_weight="0"
+                    android:text="Set Date"
+                    android:layout_margin="5dp"
+                    android:id="@+id/date_picker"
+
+                    android:layout_gravity="center"
+                    android:background="@drawable/date"
+                    android:textColor="@android:color/white"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                    >
+
+                <main.java.cz2006project.mojojo.Entity.Utils.MaterialEditText
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:id="@+id/appointment_time"
+                    android:hint="click on time"
+                    android:layout_margin="10dp"
+                    android:editable="false"
+                    />
+                <ImageButton
+                    android:layout_width="54dp"
+                    android:layout_height="54dp"
+                    android:layout_weight="0"
+                    android:text="Set Time"
+                    android:layout_margin="5dp"
+                    android:id="@+id/time_picker"
+                    android:layout_gravity="center"
+                    android:background="@drawable/clock"
+                    android:textColor="@android:color/white"
+                    />
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/abc_textfield_search_activated_mtrl_alpha">
+
+                <main.java.cz2006project.mojojo.Entity.Utils.MaterialEditText
+                    android:id="@+id/notes"
+                    android:layout_width="fill_parent"
+                    android:layout_height= "100dp"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:hint="Notes"
+                     />
+            </LinearLayout>
+
+
+
+            <Button
+                android:id="@+id/submit_button"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_gravity="bottom|center"
+                android:background="#ff2322e0"
+                android:text="Book Your Appointment Now!"
+                android:textColor="@android:color/white" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>
+
+
+

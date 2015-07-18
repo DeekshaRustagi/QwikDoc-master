@@ -1,0 +1,29 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/people_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:orientation="vertical"
+    tools:context="in.tosc.studddin.fragments.PeopleFragment">
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/people_pager"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <android.support.v4.view.PagerTabStrip
+            android:id="@+id/pager_tab_strip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:background="@color/peopleColorPrimary"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:textColor="#fff"
+            android:textSize="20sp" />
+
+    </android.support.v4.view.ViewPager>
+
+
+</LinearLayout>

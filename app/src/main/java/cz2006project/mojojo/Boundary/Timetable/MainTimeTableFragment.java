@@ -1,0 +1,114 @@
+package main.java.cz2006project.mojojo.Boundary.Timetable;
+
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBarActivity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+import cz2006project.mojojo.R;
+import main.java.cz2006project.mojojo.Application.SampleApplication;
+import main.java.cz2006project.mojojo.Boundary.Leaves.CreateLeaveFragment;
+import main.java.cz2006project.mojojo.Boundary.Leaves.PastLeaveFragment;
+import main.java.cz2006project.mojojo.Boundary.Leaves.UpcomingLeaveFragment;
+
+/**
+ * Created by Deeksha on 17-07-2015.
+ */
+public class MainTimeTableFragment {
+    ViewPager appointmentsPager;
+    FragmentPagerAdapter fragmentPagerAdapter;
+
+
+    /**
+     * Default constructor for the LeaveFragment
+     */
+    public LeaveFragment() {
+        // Required empty public constructor
+    }
+
+    /**
+     * This constructor instantiates the fragment class with the arguments.
+     * @return fragment
+     */
+
+    public static LeaveFragment newInstance() {
+        LeaveFragment fragment = new LeaveFragment();
+        Bundle args = new Bundle();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    /**
+     * This method creates the view for the Appointments Fragment by calling the fragmentPagerAdapter
+     * and instantiating Upcoming Appointment, Create Appointment and Past Appointment
+     */
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+
+        View view = inflater.inflate(R.layout.fragment_appointments, container, false);
+        int p = getActivity().getResources().getColor(R.color.eventsColorPrimary);
+        int s = getActivity().getResources().getColor(R.color.eventsColorPrimaryDark);
+        SampleApplication.setCustomTheme((ActionBarActivity) getActivity(), p, s);
+
+        fragmentPagerAdapter = new FragmentPagerAdapter(getChildFragmentManager()) {
+            @Override
+            public Fragment getItem(int position) {
+                switch (position) {
+                    case 0:
+                        return UpcomingLeaveFragment.newInstance(true);
+                    case 1:
+                        return new CreateLeaveFragment();
+                    case 2:
+                        return PastLeaveFragment.newInstance(true);
+
+                }
+                return new UpcomingLeaveFragment();
+            }
+
+            /**
+             * This method creates the title for Upcoming Appointment, Create Appointment and Past Appointment Fragments
+             */
+            @Override
+            public CharSequence getPageTitle(int position) {
+                switch (position) {
+                    case 0:
+                        return "Upcoming Appointments";
+                    case 1:
+                        return "Book new Appointment";
+                    case 2:
+                        return "Past Appointments";
+                }
+
+                return null;
+            }
+
+            /**
+             * This method returns the count of the fragments called by LeaveFragment.
+             */
+            @Override
+            public int getCount() {
+                return 3;
+            }
+        };
+
+        appointmentsPager = (ViewPager) view.findViewById(R.id.appointments_pager);
+        appointmentsPager.setAdapter(fragmentPagerAdapter);
+        appointmentsPager.setOffscreenPageLimit(2);
+        return view;
+    }
+
+
+
+}
+
+

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="signin_guest">#BDBDBD</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="edittext_color">#009688</color>
+    <color name="search_color">#982360</color>
+    <color name="search_grey">#9E9E9E</color>
+    <color name="app_background">#00BCD4</color>
+    <color name="textview_dark">#212121</color>
+    <color name="textview_light">#616161</color>
+
+    <!-- App Main colors -->
+    <color name="colorPrimary">#607D8B</color>
+    <color name="colorPrimaryDark">#455A64</color>
+
+    <!--Feed color -->
+    <color name="feedColorPrimary">#D86C70</color>
+    <color name="feedColorPrimaryDark">#A3333D</color>
+    <!--Notes color -->
+    <color name="notesColorPrimary">#2196F3</color>
+    <color name="notesColorPrimaryDark">#1976D2</color>
+    <!--People color -->
+    <color name="peopleColorPrimary">#FF9800</color>
+    <color name="peopleColorPrimaryDark">#F57C00</color>
+    <!--Listings color -->
+    <color name="listingsColorPrimary">#8BC34A</color>
+    <color name="listingsColorPrimaryDark">#689F38</color>
+    <!--Events color -->
+    <color name="eventsColorPrimary">#3F51B5</color>
+    <color name="eventsColorPrimaryDark">#303F9F</color>
+    <color name="eventsColorPrimaryPressed">#aa3F51B5</color>
+    <!--Account color -->
+    <color name="accountColorPrimary">#F44336</color>
+    <color name="accountColorPrimaryDark">#D32F2F</color>
+
+    <!-- #CF5C36 -->
+    <color name="colorPrimaryPressed">#aaD86C70</color>
+
+    <color name="pink">#e91e63</color>
+    <color name="pink_pressed">#ec407a</color>
+    <color name="blue_semi_transparent">#3b5998</color>
+    <color name="blue_semi_transparent_pressed">#8b9dc3</color>
+    <color name="twitter_blue">#55ACEE</color>
+    <color name="twitter_blue_pressed">#aa55ACEE</color>
+    <color name="google_red">#E02F2F</color>
+    <color name="google_red_pressed">#aaE02F2F</color>
+
+    <!-- Button colors -->
+    <color name="button_primary">#4BC6B9</color>
+    <color name="button_primary_disabled">#4BC6B9</color>
+    <color name="button_primary_pressed">#ADE1E5</color>
+    <color name="note_button">#FF9800</color>
+    <color name="note_button_pressed">#aaFF9800</color>
+
+    <color name="holo_blue_bright">#ff00ddff</color>
+    <color name="menu_bg">#101F2D</color>
+    <color name="light_gray">#AA808080</color>
+    <color name="gray">#dddddd</color>
+    <color name="tab_bg">#142029</color>
+    <color name="bg_light_blue">#EBF5FF</color>
+    <color name="light_black">#CC000000</color>
+    <color name="light_black_AA">#AA000000</color>
+    <color name="light_black_">#33000000</color>
+    <color name="light_white_">#33FFFFFF</color>
+    <color name="dialog_bg">#f0f0f0</color>
+    <color name="grey">#757575</color>
+    <drawable name="light_black_">#33000000</drawable>
+    <color name="divider_grey">#E0E0E0</color>
+
+</resources>

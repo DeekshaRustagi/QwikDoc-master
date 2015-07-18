@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/card_view_events"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="5dp"
+    android:foreground="?selectableItemBackground">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/main_area"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+        android:background="@android:color/white"
+        android:orientation="vertical"
+
+        >
+
+        <TextView
+            android:id="@+id/appointment_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:text="Name"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#000000" />
+
+
+
+        <RelativeLayout
+            android:id="@+id/expanded_area"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/appointment_date"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/appointment_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center"
+                android:text="Appointment Type:"
+                android:textColor="#000000"
+                android:textSize="17dp" />
+
+
+            <TextView
+                android:id="@+id/clinic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_below="@+id/appointment_type"
+                android:gravity="center"
+                android:text="Type"
+                android:textColor="#000000"
+                android:textSize="17dp" />
+            <TextView
+                android:id="@+id/doctor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_below="@+id/clinic"
+                android:gravity="center"
+                android:text="Type"
+                android:textColor="#000000"
+                android:textSize="17dp" />
+
+            <TextView
+                android:id="@+id/appointment_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_below="@+id/doctor"
+                android:gravity="center"
+                android:text="Appointment Time:"
+                android:textColor="#000000"
+                android:textSize="17dp" />
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/appointment_delete"
+                android:layout_below="@+id/appointment_time"
+                android:visibility="gone"
+                android:textColor="#ffffffff"
+                android:background="#ffffb27f"
+                android:textAlignment="center"
+                android:textSize="17dp"
+                android:gravity="center|bottom|top"
+                android:elegantTextHeight="false"
+                android:text="Cancel Appointment" />
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/appointment_changedate"
+                android:layout_below="@+id/appointment_delete"
+                android:visibility="gone"
+                android:textColor="#ffffffff"
+                android:background="#ffffb27f"
+                android:textAlignment="center"
+                android:textSize="17dp"
+                android:gravity="center|bottom|top"
+                android:elegantTextHeight="false"
+                android:text="Change Date" />
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/appointment_changetime"
+                android:layout_below="@+id/appointment_changedate"
+                android:visibility="gone"
+                android:textColor="#ffffffff"
+                android:background="#ffffb27f"
+                android:textAlignment="center"
+                android:textSize="15dp"
+                android:gravity="center|bottom|top"
+                android:elegantTextHeight="true"
+                android:text="Change Time" />
+
+
+
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+</android.support.v7.widget.CardView>
