@@ -60,7 +60,7 @@ public class ActivitiesFragment extends Fragment {
                     case 0:
                         return ListActivityFragment.newInstance(true);
                     case 1:
-                        return AddActivityFragment();
+                        return AddActivityFragment.newInstance();
 
 
                 }

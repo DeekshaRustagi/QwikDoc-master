@@ -11,14 +11,11 @@ import android.view.ViewGroup;
 
 import cz2006project.mojojo.R;
 import main.java.cz2006project.mojojo.Application.SampleApplication;
-import main.java.cz2006project.mojojo.Boundary.Leaves.CreateLeaveFragment;
-import main.java.cz2006project.mojojo.Boundary.Leaves.PastLeaveFragment;
-import main.java.cz2006project.mojojo.Boundary.Leaves.UpcomingLeaveFragment;
 
 /**
  * Created by Deeksha on 17-07-2015.
  */
-public class MainTimeTableFragment {
+public class MainTimeTableFragment extends Fragment {
     ViewPager appointmentsPager;
     FragmentPagerAdapter fragmentPagerAdapter;
 
@@ -26,7 +23,7 @@ public class MainTimeTableFragment {
     /**
      * Default constructor for the LeaveFragment
      */
-    public LeaveFragment() {
+    public MainTimeTableFragment() {
         // Required empty public constructor
     }
 
@@ -35,10 +32,10 @@ public class MainTimeTableFragment {
      * @return fragment
      */
 
-    public static LeaveFragment newInstance() {
-        LeaveFragment fragment = new LeaveFragment();
+    public static MainTimeTableFragment newInstance() {
+        MainTimeTableFragment fragment = new MainTimeTableFragment();
         Bundle args = new Bundle();
-        fragment.setArguments(args);
+        fragment.setArgument(args);
         return fragment;
     }
 
@@ -65,14 +62,13 @@ public class MainTimeTableFragment {
             public Fragment getItem(int position) {
                 switch (position) {
                     case 0:
-                        return UpcomingLeaveFragment.newInstance(true);
+                        return TimeTableFragment.newInstance(true);
                     case 1:
-                        return new CreateLeaveFragment();
-                    case 2:
-                        return PastLeaveFragment.newInstance(true);
+                        return new addTimetableFragment();
+
 
                 }
-                return new UpcomingLeaveFragment();
+                return new TimeTableFragment();
             }
 
             /**
@@ -82,11 +78,10 @@ public class MainTimeTableFragment {
             public CharSequence getPageTitle(int position) {
                 switch (position) {
                     case 0:
-                        return "Upcoming Appointments";
+                        return "Teacher's Schedule";
                     case 1:
-                        return "Book new Leave";
-                    case 2:
-                        return "Past Appointments";
+                        return "Add timeTable";
+
                 }
 
                 return null;
@@ -97,7 +92,7 @@ public class MainTimeTableFragment {
              */
             @Override
             public int getCount() {
-                return 3;
+                return 2;
             }
         };
 

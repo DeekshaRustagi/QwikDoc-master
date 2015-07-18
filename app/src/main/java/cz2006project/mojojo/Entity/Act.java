@@ -16,45 +16,45 @@ public class Act extends ParseObject {
 
 
     public void setCoordinator(ParseObject coordinator) {
-        put("COORDINATOR", coordinator);
+        put("Coordinator", coordinator);
 
     }
     public void setClassNo(ParseObject Class) {
-        put("CLASS", Class);
+        put("Class", Class);
 
     }
     public void setSection(ParseObject section) {
-        put("SECTION", section);
+        put("Section", section);
 
     }
     public void setType(ParseObject type) {
-        put("ACTIVITYTYPE", type);
+        put("ActivityType", type);
 
     }
     public void setDate(ParseObject date) {
-        put("ACTIVITYDATE", date);
+        put("ActivityDate", date);
 
     }
 
     public ParseObject getCoordinator() {
 
-        return getParseObject("COORDINATOR");
+        return getParseObject("Coordinator");
     }
 
     public ParseObject getClassNo() {
-        return getParseObject("CLASS");
+        return getParseObject("Class");
     }
 
     
 
     public ParseObject getSection() {
-        return getParseObject("SECTION");
+        return getParseObject("Section");
     }
 
     public ParseObject getType(){
-        return getParseObject("ACTIVITYTYPE");}
+        return getParseObject("ActivityType");}
 
-    public ParseObject getdate(){return getParseObject("ACTIVITYDATE");}
+    public ParseObject getdate(){return getParseObject("ActivityDate");}
 
 
 }

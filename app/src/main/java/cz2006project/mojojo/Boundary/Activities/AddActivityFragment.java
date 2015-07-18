@@ -8,7 +8,7 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
-import android.support.v4.app.Fragment;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,7 +36,7 @@ import main.java.cz2006project.mojojo.Entity.Utils.MaterialEditText;
 import main.java.cz2006project.mojojo.Entity.Act;
 
 
-public class AddActivityFragment extends Fragment {
+public class AddActivityFragment extends Fragment{
 
 
     Button create;
@@ -52,19 +52,25 @@ public class AddActivityFragment extends Fragment {
     ImageButton setDate;
 
     List<String> typelist = new ArrayList<>();
-
+    List<String> classlist = new ArrayList<>();
+    List<String> sectionlist = new ArrayList<>();
 
     /**
-     * Default constructor for the CreateLeaveFragment
+     * Default constructor for the AddActivityFragment
      */
 
     public AddActivityFragment() {
         // Required empty public constructor
     }
 
-
+    public static AddActivityFragment newInstance() {
+        AddActivityFragment fragment = new AddActivityFragment();
+        Bundle args = new Bundle();
+        fragment.setArguments(args);
+        return fragment;
+    }
     /**
-     * This method instantiates a new hash map for Appointments with the attributes for the hash map.
+     * This method instantiates a new hash map for Activity with the attributes for the hash map.
      */
 
     @Override
@@ -75,7 +81,7 @@ public class AddActivityFragment extends Fragment {
 
 
     /**
-     * This method creates a view with all the required UI elements for the CreateLeaveFragment
+     * This method creates a view with all the required UI elements for the AddActivityFragment
      */
 
     @Override
@@ -115,7 +121,7 @@ public class AddActivityFragment extends Fragment {
         ArrayAdapter adapter3 = ArrayAdapter.createFromResource(getActivity(),
                 R.array.Class_type_array, android.R.layout.simple_spinner_item);
         // Specify the layout to use when the list of choices appears
-        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
         classspinner.setAdapter(adapter3);
 
@@ -138,7 +144,7 @@ public class AddActivityFragment extends Fragment {
         ArrayAdapter adapter4 = ArrayAdapter.createFromResource(getActivity(),
                 R.array.Section_type_array, android.R.layout.simple_spinner_item);
         // Specify the layout to use when the list of choices appears
-        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter4.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
         sectionspinner.setAdapter(adapter4);
 
@@ -193,7 +199,7 @@ public class AddActivityFragment extends Fragment {
 
 
     /**
-     * This method adds input from the fragment view to the appointments hash map.
+     * This method adds input from the fragment view to the activity hash map.
      */
 
 
@@ -208,7 +214,7 @@ activity.put(ParseTables.Activity.COORDINATOR,(EditText)v.findViewById(R.id.coor
     }
 
     /**
-     * This method checks if any of the mandatory fields to book an appointment have been left empty by the user.
+     * This method checks if any of the mandatory fields to book an activity have been left empty by the user.
      */
 
     private boolean checkIfEmpty() {
@@ -262,13 +268,13 @@ activity.put(ParseTables.Activity.COORDINATOR,(EditText)v.findViewById(R.id.coor
             public void done(ParseException e) {
                 create.setClickable(true);
                 Toast.makeText(getActivity().getApplicationContext(),
-                        getString(R.string.appointment_created), Toast.LENGTH_SHORT).show();
+                        getString(R.string.leave_created), Toast.LENGTH_SHORT).show();
             }
         });
     }
 
     /**
-     *This method creates a date picker used to set the date for an appointment and push it to Parse
+     *This method creates a date picker used to set the date for an activity and push it to Parse
      *
      */
 
@@ -321,13 +327,5 @@ activity.put(ParseTables.Activity.COORDINATOR,(EditText)v.findViewById(R.id.coor
 
 }
 
-/**
- *This method creates a time picker used to set the time for an appointment and push it to Parse
- *
- */
 
-/**
- *This method opens a dialog for the user to select a time.
- *
- */
 

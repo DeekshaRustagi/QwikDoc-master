@@ -1,12 +1,6 @@
 package main.java.cz2006project.mojojo.Boundary.Leaves;
-
-/**
- * Created by srishti on 5/4/15.
- */
-
 import android.app.DatePickerDialog;
 import android.app.Dialog;
-import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
@@ -14,7 +8,6 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -27,7 +20,6 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
-import android.widget.TimePicker;
 
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -43,25 +35,7 @@ import java.util.List;
 import cz2006project.mojojo.R;
 import main.java.cz2006project.mojojo.Entity.Leave;
 import main.java.cz2006project.mojojo.External.ParseTables;
-import main.java.cz2006project.mojojo.Entity.Utils.CustomTimePicker;
 
-
-
-/**
- * A simple {@link android.support.v4.app.Fragment} subclass.
- */
-
-/**
- * <h1>Past Appointments Fragment</h1>
- * This fragment is used to display the patient's past appointments with doctors. It also allows
- * patients to follow up their past appointments by selecting a date and time for the follow-up appointment.
- *
- * <p>
- *
- * @author  Dhruv Sharma
- * @version 1.0
- * @since   2014-03-31
- */
 public class PastLeaveFragment extends Fragment {
 
     RecyclerView LeaveList;
@@ -88,7 +62,7 @@ public class PastLeaveFragment extends Fragment {
     }
 
     /**
-     *This method creates a new instance of the Past Appointments Fragment
+     *This method creates a new instance of the Past Leaves Fragment
      * with the required arguments.
      *
      */
@@ -119,12 +93,12 @@ public class PastLeaveFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        v = inflater.inflate(R.layout.fragments_past_appointments_list, container, false);
+        v = inflater.inflate(R.layout.fragments_past_leave_list, container, false);
 
-        LeaveList = (RecyclerView) v.findViewById(R.id.listviewpastappointments);
+        LeaveList = (RecyclerView) v.findViewById(R.id.listviewpastleave);
 
-        LeaveMainLayout = (LinearLayout) v.findViewById(R.id.appointments_main_list);
-        emptyLeave = (ScrollView) v.findViewById(R.id.empty_appointments);
+        LeaveMainLayout = (LinearLayout) v.findViewById(R.id.leave_main_list);
+        emptyLeave = (ScrollView) v.findViewById(R.id.empty_leave);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         LeaveList.setLayoutManager(layoutManager);
         swipeRefreshLayout = (SwipeRefreshLayout) v.findViewById(R.id.swipeRefreshLayout);
@@ -143,9 +117,9 @@ public class PastLeaveFragment extends Fragment {
 
 
     /**
-     *This class creates a view showing the list of past appointments to the user
-     * which can be clicked to view more details about the appointment and follow up the
-     * appointment.
+     *This class creates a view showing the list of past leaves to the user
+     * which can be clicked to view more details about the leave and follow up the
+     * leave
      *
      */
     public class LeaveAdapter extends RecyclerView.Adapter<LeaveAdapter.ViewHolder> implements View.OnClickListener {
@@ -159,20 +133,20 @@ public class PastLeaveFragment extends Fragment {
          *
          */
 
-        public LeaveAdapter(List<ParseObject> appointments) {
+        public LeaveAdapter(List<ParseObject> leave) {
             this.leave = leave;
         }
 
         /**
          *
-         * This method inflates the view to see the list of past appointments
-         * and attaches a listener so that each appointment can be clicked to view
+         * This method inflates the view to see the list of past leaves
+         * and attaches a listener so that each leave can be clicked to view
          * further details.
          *
          */
         @Override
         public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            CardView cd = (CardView) LayoutInflater.from(parent.getContext()).inflate(R.layout.listviewpastappointments, parent, false);
+            CardView cd = (CardView) LayoutInflater.from(parent.getContext()).inflate(R.layout.listviewpastleave, parent, false);
             ViewHolder viewHolder = new ViewHolder(cd);
             viewHolder.itemView.setOnClickListener(LeaveAdapter.this);
             viewHolder.itemView.setTag(viewHolder);
@@ -182,8 +156,8 @@ public class PastLeaveFragment extends Fragment {
 
         /**
          *
-         * This method binds the data from Parse to the appointment view
-         * with details about the appointment.
+         * This method binds the data from Parse to the leave view
+         * with details about the leave.
          *
          */
         @Override
@@ -192,14 +166,9 @@ public class PastLeaveFragment extends Fragment {
             holder.teacher.setText("Teacher: " + (String)leave.get(position).get(ParseTables.Leave.TEACHER));
             holder.type.setText("Leave Type " + (String) leave.get(position).get(ParseTables.Leave.LEAVETYPE));
             holder.leave_date.setText("Leave Date" + (String) leave.get(position).get(ParseTables.Leave.LEAVEDATE));
+            holder.reason.setText("Reason: " + (String)leave.get(position).get(ParseTables.Leave.REASON));
 
 
-
-
-
-            if(check_my_leaves){
-                holder.leave_followup.setVisibility(View.VISIBLE);
-            }
 
             if (position == expandedPosition) {
                 holder.expanded_area.setVisibility(View.VISIBLE);
@@ -208,9 +177,9 @@ public class PastLeaveFragment extends Fragment {
             }
         }
         /**
-         *Returns the size of the past appointments list.
+         *Returns the size of the past leave list.
          *
-         * @return The number of past appointments booked by the user.
+         * @return The number of past leave booked by the user.
          *
          */
 
@@ -221,7 +190,7 @@ public class PastLeaveFragment extends Fragment {
 
 
         /**
-         *Expands the appointment view on click to show more details about the appointment that is clicked.
+         *Expands the leave view on click to show more details about the all leave that is clicked.
          *
          *
          */
@@ -245,8 +214,8 @@ public class PastLeaveFragment extends Fragment {
 
         /**
          *
-         * This method inflates the view to see the list of past appointments
-         * and attaches a listener so that each appointment can be clicked to view
+         * This method inflates the view to see the list of past leaves
+         * and attaches a listener so that each leave can be clicked to view
          * further details.
          *
          */
@@ -259,7 +228,7 @@ public class PastLeaveFragment extends Fragment {
             TextView reason;
             TextView leave_date;
 
-            Button leave_followup;
+
 
 
 
@@ -270,12 +239,12 @@ public class PastLeaveFragment extends Fragment {
             public ViewHolder(View itemView) {
                 super(itemView);
 
-                this.teacher = (TextView) itemView.findViewById(R.id.clinic);
+                this.teacher = (TextView) itemView.findViewById(R.id.teacher);
                 this.type = (TextView) itemView.findViewById(R.id.doctor);
                 this.expanded_area = (RelativeLayout) itemView.findViewById(R.id.expanded_area);
 
-                this.reason = (TextView) itemView.findViewById(R.id.notes);
-                this.leave_date = (TextView) itemView.findViewById(R.id.appointment_date);
+                this.reason = (TextView) itemView.findViewById(R.id.reason);
+                this.leave_date = (TextView) itemView.findViewById(R.id.leave_date);
 
 
             };
@@ -293,7 +262,7 @@ public class PastLeaveFragment extends Fragment {
     }
 
     /**
-     *This method creates a date picker used to set the date for an appointment and push it to Parse
+     *This method creates a date picker used to set the date for an leave and push it to Parse
      *
      */
 
@@ -329,10 +298,6 @@ public class PastLeaveFragment extends Fragment {
             }*/);
 
         }
-        /**
-         *@return dialog to set date of follow-up appointment
-         *
-         */
 
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -362,7 +327,7 @@ public class PastLeaveFragment extends Fragment {
     }
 
     /**
-     *This method creates a time picker used to set the date for an appointment and push it to Parse
+     *This method creates a time picker used to set the date for an leaves and push it to Parse
      *
      */
 
@@ -370,8 +335,8 @@ public class PastLeaveFragment extends Fragment {
 
 
     /**
-     *This method fetches the user's past appointments from Parse by
-     * comparing the current date with the date of the appointment.
+     *This method fetches the user's past leaves from Parse by
+     * comparing the current date with the date of the leaves
      *
      */
     public void fetchData(){
@@ -396,12 +361,12 @@ public class PastLeaveFragment extends Fragment {
 
 
     /**
-     *This populates the past appointments list once the data is fetched from Parse.
+     *This populates the past leaves list once the data is fetched from Parse.
      *
      */
 
-    public void doneFetching(List<ParseObject> appointments){
-        adapter = new LeaveAdapter(appointments);
+    public void doneFetching(List<ParseObject> leave){
+        adapter = new LeaveAdapter(leave);
         LeaveList.setAdapter(adapter);
         if (refresh == true) {
             swipeRefreshLayout.setRefreshing(false);

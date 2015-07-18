@@ -1,63 +1,63 @@
-package main.java.cz2006project.mojojo.Boundary.Leaves;
+
+package main.java.cz2006project.mojojo.Boundary.Activities;
 
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.app.Dialog;
-import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
-import android.support.v4.app.Fragment;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.CardView;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.ScrollView;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.app.DatePickerDialog;
+        import android.app.AlertDialog;
 
-import com.parse.DeleteCallback;
-import com.parse.FindCallback;
-import com.parse.ParseException;
-import com.parse.ParseObject;
-import com.parse.ParseQuery;
-import com.parse.ParseUser;
+        import android.content.DialogInterface;
+        import android.app.Dialog;
+        import android.os.Bundle;
+        import android.support.v4.app.DialogFragment;
+        import android.support.v4.app.Fragment;
+        import android.support.v4.widget.SwipeRefreshLayout;
+        import android.support.v7.widget.CardView;
+        import android.support.v7.widget.LinearLayoutManager;
+        import android.support.v7.widget.RecyclerView;
+        import android.view.LayoutInflater;
+        import android.view.Menu;
+        import android.view.MenuInflater;
+        import android.view.MenuItem;
+        import android.view.View;
+        import android.view.ViewGroup;
+        import android.widget.AdapterView;
+        import android.widget.Button;
+        import android.widget.LinearLayout;
+        import android.widget.RelativeLayout;
+        import android.widget.ScrollView;
+        import android.widget.TextView;
+        import android.widget.Toast;
+        import android.app.DatePickerDialog;
 
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.List;
+        import com.parse.DeleteCallback;
+        import com.parse.FindCallback;
+        import com.parse.ParseException;
+        import com.parse.ParseObject;
+        import com.parse.ParseQuery;
+        import com.parse.ParseUser;
 
-import cz2006project.mojojo.R;
-import main.java.cz2006project.mojojo.External.ParseTables;
+        import java.util.Calendar;
+        import java.util.Date;
+        import java.util.GregorianCalendar;
+        import java.util.HashMap;
+        import java.util.List;
+
+        import cz2006project.mojojo.R;
+        import main.java.cz2006project.mojojo.External.ParseTables;
 
 
+public class ListActivityFragment extends Fragment {
 
-
-
-public class UpcomingLeaveFragment extends Fragment {
-
-    RecyclerView LeaveList;
+    RecyclerView ActivityList;
     RecyclerView.Adapter adapter;
     SwipeRefreshLayout swipeRefreshLayout;
     private boolean refresh = false;
-    private boolean check_my_leaves = true;
+    private boolean check_my_activity = true;
     View v;
-    LinearLayout LeaveMainLayout;
-    ScrollView emptyLeaves;
+    LinearLayout ActivityMainLayout;
+    ScrollView emptyActivity;
 
-
-    public static ParseObject lev;
+    private static HashMap<String, Object> Activity;
+    public static ParseObject act;
     public static int yeartest, monthtest, daytest, hourtest, minutetest;
 
 
@@ -66,32 +66,34 @@ public class UpcomingLeaveFragment extends Fragment {
      *
      */
 
-    public UpcomingLeaveFragment() {
+    public ListActivityFragment() {
 
     }
 
 
     /**
-     *This method creates a new instance of the upcoming leaves Fragment
+     *This method creates a new instance of the Past Appointments Fragment
      * with the required arguments.
      *
      */
 
 
-    public static UpcomingLeaveFragment newInstance(Boolean check) {
-        UpcomingLeaveFragment upcomingLeaveFragment = new UpcomingLeaveFragment();
+    public static ListActivityFragment newInstance(Boolean check) {
+        ListActivityFragment listActivityFragment = new ListActivityFragment();
         Bundle b = new Bundle();
         b.putBoolean("check", check);
-        upcomingLeaveFragment.setArguments(b);
-        return upcomingLeaveFragment;
+        listActivityFragment.setArguments(b);
+        return listActivityFragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Activity= new HashMap<>();
         setHasOptionsMenu(true);
+
         if (this.getArguments() != null) {
-            check_my_leaves = getArguments().getBoolean("check");
+            check_my_activity = getArguments().getBoolean("check");
         }
     }
 
@@ -106,11 +108,11 @@ public class UpcomingLeaveFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.fragments_upcoming_activity_list, container, false);
-        LeaveList = (RecyclerView) v.findViewById(R.id.listviewleave);
-      LeaveMainLayout = (LinearLayout) v.findViewById(R.id.leave_main_list);
-        emptyLeaves = (ScrollView) v.findViewById(R.id.empty_leave);
+        ActivityList = (RecyclerView) v.findViewById(R.id.listviewactivity);
+        ActivityMainLayout = (LinearLayout) v.findViewById(R.id.activity_main_list);
+        emptyActivity = (ScrollView) v.findViewById(R.id.empty_activity);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
-        LeaveList.setLayoutManager(layoutManager);
+        ActivityList.setLayoutManager(layoutManager);
         swipeRefreshLayout = (SwipeRefreshLayout) v.findViewById(R.id.swipeRefreshLayout);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -124,55 +126,56 @@ public class UpcomingLeaveFragment extends Fragment {
         return v;
     }
     /**
-     *This class creates a view showing the list of past leaves to the user
-     * which can be clicked to view more details about the leaves and follow up the
-     * leave.
+     *This class creates a view showing the list of past activity to the user
+     * which can be clicked to view more details about the activity and follow up the
+     * activity
      *
      */
-    public class LeaveAdapter extends RecyclerView.Adapter<LeaveAdapter.ViewHolder> implements View.OnClickListener {
+    public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.ViewHolder> implements View.OnClickListener {
 
         private int expandedPosition = -1;
-        private List<ParseObject> leaves;
+        private List<ParseObject> Activity;
 
-        public LeaveAdapter(List<ParseObject> leaves) {
-            this.leaves = leaves;
+        public ActivityAdapter(List<ParseObject> Activity) {
+            this.Activity = Activity;
         }
 
         /**
          *
-         * This method inflates the view to see the list of past leave
-         * and attaches a listener so that each leave can be clicked to view
+         * This method inflates the view to see the list of past activity
+         * and attaches a listener so that each activity can be clicked to view
          * further details.
          *
          */
         @Override
         public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            CardView cd = (CardView) LayoutInflater.from(parent.getContext()).inflate(R.layout.listview_leave, parent, false);
+            CardView cd = (CardView) LayoutInflater.from(parent.getContext()).inflate(R.layout.listview_activity, parent, false);
             ViewHolder viewHolder = new ViewHolder(cd);
-            viewHolder.itemView.setOnClickListener(LeaveAdapter.this);
+            viewHolder.itemView.setOnClickListener(ActivityAdapter.this);
             viewHolder.itemView.setTag(viewHolder);
             return viewHolder;
         }
 
         /**
          *
-         * This method binds the data from Parse to the leave view
-         * with details about the leave.
+         * This method binds the data from Parse to the activity view
+         * with details about the activity.
          *
          */
         @Override
         public void onBindViewHolder(final ViewHolder holder, int position) {
+            holder.Class.setText("Class: " + (String) Activity.get(position).get(ParseTables.Activity.CLASS));
+            holder.section.setText("Section: " + (String) Activity.get(position).get(ParseTables.Activity.SECTION));
+            holder.coordinator.setText("Coordinator: " + (String) Activity.get(position).get(ParseTables.Activity.COORDINATOR));
+            holder. activity_date.setText("Activity Date:" +(String)Activity.get(position).get(ParseTables.Activity.ACTIVITYDATE));
+            holder.type.setText("Type: " + (String) Activity.get(position).get(ParseTables.Activity.ACTIVITYTYPE));
 
-            holder.teacher.setText("Teacher: " + (String) leaves.get(position).get(ParseTables.Leave.TEACHER));
-            holder.type.setText("Type of Leave: " + (String) leaves.get(position).get(ParseTables.Leave.LEAVETYPE));
-            holder.leave_date.setText("Leave Date:" + (String)leaves.get(position).get(ParseTables.Leave.LEAVEDATE));
-            holder.reason.setText((String)leaves.get(position).get(ParseTables.Leave.REASON));
 
 
+            if (check_my_activity) {
+                holder. activity_delete.setVisibility(View.VISIBLE);
+                holder. activity_changedate.setVisibility(View.VISIBLE);
 
-            if (check_my_leaves) {
-                holder.leave_delete.setVisibility(View.VISIBLE);
-                holder.leave_changedate.setVisibility(View.VISIBLE);
 
             }
 
@@ -184,18 +187,18 @@ public class UpcomingLeaveFragment extends Fragment {
         }
 
         /**
-         *Returns the size of the upcoming leave list.
+         *Returns the size of the upcoming activity list.
          *
-         * @return The number of upcoming leave booked by the user.
+         * @return The number of upcoming activity booked by the user.
          *
          */
         @Override
         public int getItemCount() {
-            return leaves.size();
+            return Activity.size();
         }
 
         /**
-         *Expands the leave view on click to show more details about the leave that is clicked.
+         *Expands the activity view on click to show more details about the activity that is clicked.
          *
          *
          */
@@ -218,61 +221,60 @@ public class UpcomingLeaveFragment extends Fragment {
 
         /**
          *
-         * This method inflates the view to see the list of past leave
-         * and attaches a listener so that each leave can be clicked to view
+         * This method inflates the view to see the list of past activity
+         * and attaches a listener so that each activity can be clicked to view
          * further details.
          *
          */
         public class ViewHolder extends RecyclerView.ViewHolder {
-
-            TextView type;
-            TextView teacher;
+            TextView section;
+            TextView coordinator;
+            TextView Class;
             RelativeLayout expanded_area;
-            TextView reason;
-            TextView leave_date;
+            TextView type;
+            TextView activity_date;
 
-            Button leave_delete;
-            Button leave_changedate;
+            Button activity_delete;
+            Button activity_changedate;
+
 
 
 
 
             public ViewHolder(View itemView) {
                 super(itemView);
-
-                this.type = (TextView) itemView.findViewById(R.id.leave_type);
-                this.teacher = (TextView) itemView.findViewById(R.id.teacher);
+                this.type = (TextView) itemView.findViewById(R.id.activity_type);
+                this.Class = (TextView) itemView.findViewById(R.id.Class);
+                this.coordinator = (TextView) itemView.findViewById(R.id.coordinator);
                 this.expanded_area = (RelativeLayout) itemView.findViewById(R.id.expanded_area);
 
-                this.reason = (TextView) itemView.findViewById(R.id.reason);
-                this.leave_date = (TextView) itemView.findViewById(R.id.leave_date);
+                this.section = (TextView) itemView.findViewById(R.id.section);
+                this. activity_date = (TextView) itemView.findViewById(R.id.activity_date);
 
-                this.leave_delete = (Button) itemView.findViewById(R.id.leave_delete);
-                this.leave_changedate = (Button) itemView.findViewById(R.id.leave_changedate);
-
-                //this.leave_change = (Button) itemView.findViewById(R.id.leave_change);
+                this. activity_delete = (Button) itemView.findViewById(R.id.activity_delete);
+                this. activity_changedate = (Button) itemView.findViewById(R.id.activity_changedate);
 
 
-                leave_delete.setOnClickListener(new View.OnClickListener() {
+                activity_delete.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-
                         builder.setTitle("Confirm");
-                        builder.setMessage("Are you sure you want to cancel this leave?");
+
+                        builder.setMessage("Are you sure you want to cancel this activity?");
 
                         builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
 
                             public void onClick(DialogInterface dialog, int which) {
-                                lev = leaves.get(getPosition());
+                                act = Activity.get(getPosition());
                                 Calendar calendar = Calendar.getInstance();
                                 int year = calendar.get(Calendar.YEAR);
                                 int month = calendar.get(Calendar.MONTH);
                                 int day = calendar.get(Calendar.DATE);
                                 calendar.set(year, month, day, 0, 0, 0);
                                 Date BegginingOfToday = calendar.getTime();
-                                if (lev.getDate("Date").after(BegginingOfToday)) {
-                                    lev.deleteInBackground(new DeleteCallback() {
+                                if (act.getDate("Date").after(BegginingOfToday)) {
+                                   act.deleteInBackground(new DeleteCallback() {
                                         @Override
                                         public void done(ParseException e) {
                                             if (e == null) {
@@ -306,33 +308,33 @@ public class UpcomingLeaveFragment extends Fragment {
                     }
                 });
 
-                leave_changedate.setOnClickListener(new View.OnClickListener() {
+                activity_changedate.setOnClickListener(new View.OnClickListener() {
 
 
                     @Override
                     public void onClick(View v) {
-                        lev = leaves.get(getPosition());
+                        act = Activity.get(getPosition());
                         DatePickerFragment datePicker = new DatePickerFragment();
                         datePicker.show(getActivity().getSupportFragmentManager(), "Set Date");
 
                     }
                 });
-
             }
+
         }
     }
+
     /**
-     *This method fetches the user's upcoming leave from Parse by
-     * comparing the current date with the date of the leave
-     *.
+     *This method fetches the user's upcoming activity from Parse by
+     * comparing the current date with the date of the activity.
      *
      */
     public void fetchData() {
         ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(
-                "Leave");
+                "Activity");
 
-        if (check_my_leaves) {
-            query.whereEqualTo("teacher", ParseUser.getCurrentUser().getString("name"));
+        if (check_my_activity) {
+            query.whereEqualTo("coordinator", ParseUser.getCurrentUser().getString("name"));
             Calendar currentDate = Calendar.getInstance();
             Date current = currentDate.getTime();
             query.whereGreaterThanOrEqualTo("Date", current);
@@ -348,18 +350,18 @@ public class UpcomingLeaveFragment extends Fragment {
     }
 
     /**
-     *This populates the upcoming leave list once the data is fetched from Parse.
+     *This populates the upcoming activity list once the data is fetched from Parse.
      *
      */
-    public void doneFetching(List<ParseObject> leaves) {
-        adapter = new LeaveAdapter(leaves);
-        LeaveList.setAdapter(adapter);
+    public void doneFetching(List<ParseObject> activity) {
+        adapter = new  ActivityAdapter(activity);
+        ActivityList.setAdapter(adapter);
         if (refresh == true) {
             swipeRefreshLayout.setRefreshing(false);
             refresh = false;
         }
-        if (check_my_leaves && adapter.getItemCount() == 0) {
-            LeaveMainLayout.setVisibility(View.GONE);
+        if (check_my_activity && adapter.getItemCount() == 0) {
+            ActivityMainLayout.setVisibility(View.GONE);
         }
     }
 
@@ -384,7 +386,7 @@ public class UpcomingLeaveFragment extends Fragment {
     }
 
     /**
-     *This method creates a date picker used to change the date for an leave and push it to Parse
+     *This method creates a date picker used to change the date for an activity and push it to Parse
      *
      */
     public static class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {
@@ -392,7 +394,7 @@ public class UpcomingLeaveFragment extends Fragment {
         @Override
         public void onDateSet(android.widget.DatePicker view, int year, int monthOfYear, int dayOfMonth) {
 
-            Date date2 = lev.getDate("Date");
+            Date date2 =act.getDate("Date");
             Calendar calendar = GregorianCalendar.getInstance();
 
             calendar.setTime(date2);
@@ -401,13 +403,13 @@ public class UpcomingLeaveFragment extends Fragment {
 
             calendar.set(year, monthOfYear, dayOfMonth, hourtest, minutetest);
 
-            lev.put("Date", calendar.getTime());
-            lev.saveInBackground();
+            act.put("Date", calendar.getTime());
+           act.saveInBackground();
         }
 
 
         /**
-         *@return dialog to change date of upcoming leave
+         *@return dialog to change date of upcoming activity
          *
          */
 
@@ -440,4 +442,6 @@ public class UpcomingLeaveFragment extends Fragment {
 
 
 
+
     }
+

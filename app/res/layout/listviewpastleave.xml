@@ -17,7 +17,7 @@
         >
 
         <TextView
-            android:id="@+id/appointment_date"
+            android:id="@+id/activity_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -25,6 +25,7 @@
             android:text="Name"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="#000000" />
+
 
 
 
@@ -42,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:gravity="center"
-                android:text="Appointment Type:"
+                android:text="Name"
                 android:textColor="#000000"
                 android:textSize="17dp" />
 
@@ -78,49 +79,20 @@
                 android:text="Appointment Time:"
                 android:textColor="#000000"
                 android:textSize="17dp" />
+
             <Button
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/appointment_delete"
+                android:id="@+id/appointment_followup"
                 android:layout_below="@+id/appointment_time"
                 android:visibility="gone"
+                android:text="Follow Up Appointment"
                 android:textColor="#ffffffff"
-                android:background="#ffffb27f"
+                android:background="#ffff8392"
                 android:textAlignment="center"
                 android:textSize="17dp"
                 android:gravity="center|bottom|top"
-                android:elegantTextHeight="false"
-                android:text="Cancel Appointment" />
-
-            <Button
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/appointment_changedate"
-                android:layout_below="@+id/appointment_delete"
-                android:visibility="gone"
-                android:textColor="#ffffffff"
-                android:background="#ffffb27f"
-                android:textAlignment="center"
-                android:textSize="17dp"
-                android:gravity="center|bottom|top"
-                android:elegantTextHeight="false"
-                android:text="Change Date" />
-
-            <Button
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/appointment_changetime"
-                android:layout_below="@+id/appointment_changedate"
-                android:visibility="gone"
-                android:textColor="#ffffffff"
-                android:background="#ffffb27f"
-                android:textAlignment="center"
-                android:textSize="15dp"
-                android:gravity="center|bottom|top"
-                android:elegantTextHeight="true"
-                android:text="Change Time" />
-
-
+                android:elegantTextHeight="false"/>
 
 
         </RelativeLayout>

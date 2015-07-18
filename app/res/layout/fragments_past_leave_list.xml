@@ -4,14 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="main.java.cz2006project.mojojo.Boundary.Leaves.UpcomingLeaveFragment">
+    tools:context="main.java.cz2006project.mojojo.Boundary.Leaves.PastLeaveFragment">
 
 
     <LinearLayout
-        android:id="@+id/appointments_main_list"
+        android:id="@+id/leave_main_list"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:orientation="vertical">
+
 
 
         <android.support.v4.widget.SwipeRefreshLayout
@@ -20,7 +21,7 @@
             android:layout_height="match_parent">
 
             <android.support.v7.widget.RecyclerView
-                android:id="@+id/listviewappointments"
+                android:id="@+id/listviewpastleave"
                 android:layout_width="match_parent"
                 android:layout_height="fill_parent"
                 android:layout_marginTop="8dp"
@@ -32,7 +33,7 @@
     </LinearLayout>
 
     <ScrollView
-        android:id="@+id/empty_appointments"
+        android:id="@+id/empty_leave"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -79,7 +80,7 @@
                     android:layout_gravity="center"
                     android:gravity="center_horizontal"
                     android:padding="15dp"
-                    android:text="No scheduled appointments for you :)"
+                    android:text="You have not yet taken any leave "
                     android:textSize="15sp"
                     app:typeface="fonts/Gotham-MediumItalic.ttf" />
 

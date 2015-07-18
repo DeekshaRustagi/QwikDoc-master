@@ -29,17 +29,6 @@ import main.java.cz2006project.mojojo.External.ParseTables;
 import main.java.cz2006project.mojojo.Entity.Leave;
 import main.java.cz2006project.mojojo.Entity.Utils.MaterialEditText;
 import android.widget.EditText;
-/**
- * <h1>Create Leave Fragment</h1>
- * This fragment is used by patients to book appointments with doctors by inputting all necessary details
- * required to book the appointment.
- * <p/>
- * <p/>
- *
- * @author Srishti Lal
- * @version 1.0
- * @since 2014-03-31
- */
 
 
 public class CreateLeaveFragment extends Fragment {
@@ -68,7 +57,7 @@ public class CreateLeaveFragment extends Fragment {
 
 
     /**
-     * This method instantiates a new hash map for Appointments with the attributes for the hash map.
+     * This method instantiates a new hash map for leaves with the attributes for the hash map.
      */
 
     @Override
@@ -153,7 +142,7 @@ public class CreateLeaveFragment extends Fragment {
 
 
     /**
-     * This method adds input from the fragment view to the appointments hash map.
+     * This method adds input from the fragment view to the leaves hash map.
      */
 
 
@@ -168,7 +157,7 @@ public class CreateLeaveFragment extends Fragment {
     }
 
     /**
-     * This method checks if any of the mandatory fields to book an appointment have been left empty by the user.
+     * This method checks if any of the mandatory fields to book an leaves have been left empty by the user.
      */
 
     private boolean checkIfEmpty() {
@@ -192,7 +181,7 @@ public class CreateLeaveFragment extends Fragment {
 
 
     /**
-     * This method pushes the data from the 'appointments' hash map created earlier, to the Parse database
+     * This method pushes the data from the leaves hash map created earlier, to the Parse database
      * by creating a new Leave object with the details entered by the user in the Parse Leave Class.
      */
 
@@ -224,7 +213,7 @@ public class CreateLeaveFragment extends Fragment {
     }
 
     /**
-     *This method creates a date picker used to set the date for an appointment and push it to Parse
+     *This method creates a date picker used to set the date for an leaves and push it to Parse
      *
      */
 
@@ -277,13 +266,5 @@ public class CreateLeaveFragment extends Fragment {
 
 }
 
-    /**
-     *This method creates a time picker used to set the time for an appointment and push it to Parse
-     *
-     */
 
-        /**
-         *This method opens a dialog for the user to select a time.
-         *
-         */
 
