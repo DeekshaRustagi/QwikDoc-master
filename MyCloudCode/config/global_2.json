@@ -1,0 +1,14 @@
+{
+  "global": {
+    "parseVersion": "1.4.0"
+  },
+  "applications": {
+    "QwikDoc": {
+      "applicationId": "f72yZAJVZUKvkYXGwQgyEEuy3bkelHxNSNpPF9ea",
+      "masterKey": "Fu5wk3a8kSjeA9f6GRemOokws6qDtiBsvw0IIG2R"
+    },
+    "_default": {
+      "link": "QwikDoc"
+    }
+  }
+}

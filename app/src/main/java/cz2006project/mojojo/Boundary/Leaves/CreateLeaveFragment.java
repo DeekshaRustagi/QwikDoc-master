@@ -2,11 +2,9 @@ package main.java.cz2006project.mojojo.Boundary.Leaves;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
-import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
-import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +13,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Spinner;
-import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.parse.ParseException;
@@ -29,12 +26,11 @@ import java.util.List;
 
 import cz2006project.mojojo.R;
 import main.java.cz2006project.mojojo.External.ParseTables;
-import main.java.cz2006project.mojojo.Entity.Utils.CustomTimePicker;
-import main.java.cz2006project.mojojo.Entity.Appointment;
+import main.java.cz2006project.mojojo.Entity.Leave;
 import main.java.cz2006project.mojojo.Entity.Utils.MaterialEditText;
-
+import android.widget.EditText;
 /**
- * <h1>Create Appointment Fragment</h1>
+ * <h1>Create Leave Fragment</h1>
  * This fragment is used by patients to book appointments with doctors by inputting all necessary details
  * required to book the appointment.
  * <p/>
@@ -54,7 +50,7 @@ public class CreateLeaveFragment extends Fragment {
     private Spinner typespinner;
     public static int hourTest, minuteTest, yearTest, monthTest, dayTest;
     public static Calendar calendar;
-
+    EditText teacher;
 
     private static HashMap<String, Object> leaves;
     ImageButton setDate;
@@ -92,7 +88,7 @@ public class CreateLeaveFragment extends Fragment {
         v = inflater.inflate(R.layout.fragment_createleave, container, false);
         create = (Button) v.findViewById(R.id.submit_button);
         setDate = (ImageButton) v.findViewById(R.id.date_picker);
-
+    teacher=(EditText)v.findViewById(R.id.teacher);
         typespinner = (Spinner) v.findViewById(R.id.typespinner);
 
 
@@ -111,50 +107,50 @@ public class CreateLeaveFragment extends Fragment {
                                        int arg2, long arg3) {
                 // TODO Auto-generated method stub
                 leaves.put(ParseTables.Leave.LEAVETYPE, typespinner.getSelectedItem().toString());
+            }
+
+            public void onNothingSelected(AdapterView<?> parent) {
 
 
             }
+
         });
 
 
 
 
-
-    public void onNothingSelected(AdapterView<?> parent) {
-    }
-
-
     setDate.setOnClickListener(new View.OnClickListener()
 
-    {
-        @Override
-        public void onClick (View v){
-        DatePickerFragment datePicker = new DatePickerFragment();
-        datePicker.show(getActivity().getSupportFragmentManager(), "Set Date");
-    }
-    }
+                               {
+                                   @Override
+                                   public void onClick(View v) {
+                                       DatePickerFragment datePicker = new DatePickerFragment();
+                                       datePicker.show(getActivity().getSupportFragmentManager(), "Set Date");
+                                   }
+                               }
 
     );
 
     create.setOnClickListener(new View.OnClickListener()
 
-    {
-        @Override
-        public void onClick (View v){
+                              {
+                                  @Override
+                                  public void onClick(View v) {
 
-        create.setClickable(false);
-        addInput();
-        if (checkIfEmpty()) {
-            pushDataToParse();
-        }
+                                      create.setClickable(false);
+                                      addInput();
+                                      if (checkIfEmpty()) {
+                                          pushDataToParse();
+                                      }
 
-    }
-    }
+                                  }
+                              }
 
     );
     return v;
 
 }
+
 
     /**
      * This method adds input from the fragment view to the appointments hash map.
@@ -162,11 +158,11 @@ public class CreateLeaveFragment extends Fragment {
 
 
     public void addInput() {
-
+        leaves.put(ParseTables.Leave.TEACHER,((EditText)v.findViewById(R.id.teacher)));
         leaves.put(ParseTables.Leave.TEACHER, ParseUser.getCurrentUser().getString("name"));
         leaves.put(ParseTables.Leave.LEAVETYPE, typespinner.getSelectedItem().toString());
 
-        leaves.put(ParseTables.Leave.REASON, ((MaterialEditText) v.findViewById(R.id.notes)).getText() + "");
+        leaves.put(ParseTables.Leave.REASON, ((MaterialEditText) v.findViewById(R.id.reason)).getText() + "");
 
 
     }
@@ -178,20 +174,17 @@ public class CreateLeaveFragment extends Fragment {
     private boolean checkIfEmpty() {
 
 
-        if (leaves.get(ParseTables.Leave.CLINIC).toString().isEmpty()) {
-            Toast.makeText(getActivity().getApplicationContext(), "Please select clinic", Toast.LENGTH_LONG).show();
+        if (!leaves.get(ParseTables.Leave.LEAVETYPE).toString().isEmpty()) {
+            Toast.makeText(getActivity().getApplicationContext(), "Please select type of leave", Toast.LENGTH_LONG).show();
             return false;
         }
 
 
-        if (!leaves.containsKey(ParseTables.Appointment.DATE)) {
+        if (!leaves.containsKey(ParseTables.Leave.LEAVEDATE)) {
             Toast.makeText(getActivity().getApplicationContext(), "Please enter date", Toast.LENGTH_LONG).show();
             return false;
         }
-        if (!appointments.containsKey(ParseTables.Appointment.TIME)) {
-            Toast.makeText(getActivity().getApplicationContext(), "Please enter time", Toast.LENGTH_LONG).show();
-            return false;
-        }
+
 
 
         return true;
@@ -200,32 +193,32 @@ public class CreateLeaveFragment extends Fragment {
 
     /**
      * This method pushes the data from the 'appointments' hash map created earlier, to the Parse database
-     * by creating a new Appointment object with the details entered by the user in the Parse Appointment Class.
+     * by creating a new Leave object with the details entered by the user in the Parse Leave Class.
      */
 
 
     private void pushDataToParse() {
 
 
-        Appointment appointment = new Appointment();
+        Leave leave = new Leave();
 
         calendar.set(yearTest, monthTest, dayTest, hourTest, minuteTest);
-        appointments.put(ParseTables.Appointment.DATE, calendar.getTime());
-        appointment.put(ParseTables.Appointment.DATE, appointments.get(ParseTables.Appointment.DATE));
-        appointment.put(ParseTables.Appointment.TIME, appointments.get(ParseTables.Appointment.TIME));
+        leave.put(ParseTables.Leave.LEAVEDATE, calendar.getTime());
+        leave.put(ParseTables.Leave.LEAVEDATE, leave.get(ParseTables.Leave.LEAVEDATE));
 
 
-        appointment.put(ParseTables.Appointment.TYPE, appointments.get(ParseTables.Appointment.TYPE));
-        appointment.put(ParseTables.Appointment.NOTES, appointments.get(ParseTables.Appointment.Reason));
-        appointment.put(ParseTables.Appointment.PATIENT, appointments.get(ParseTables.Appointment.Teacher));
-        appointment.put("ReminderSent", false);
 
-        appointment.saveInBackground(new SaveCallback() {
+        leave.put(ParseTables.Leave.LEAVETYPE, leave.get(ParseTables.Leave.LEAVETYPE));
+        leave.put(ParseTables.Leave.REASON, leave.get(ParseTables.Leave.REASON));
+        leave.put(ParseTables.Leave.TEACHER, leave.get(ParseTables.Leave.TEACHER));
+
+
+        leave.saveInBackground(new SaveCallback() {
             @Override
             public void done(ParseException e) {
                 create.setClickable(true);
                 Toast.makeText(getActivity().getApplicationContext(),
-                        getString(R.string.appointment_created), Toast.LENGTH_SHORT).show();
+                        getString(R.string.leave_created), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -234,7 +227,7 @@ public class CreateLeaveFragment extends Fragment {
      *This method creates a date picker used to set the date for an appointment and push it to Parse
      *
      */
-}
+
 
     public static class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {
 
@@ -242,14 +235,14 @@ public class CreateLeaveFragment extends Fragment {
         public void onDateSet(android.widget.DatePicker view, int year, int monthOfYear, int dayOfMonth) {
             monthOfYear++;
             String date = String.valueOf(dayOfMonth) + "/" + monthOfYear + "/" + year;
-            ((MaterialEditText) v.findViewById(R.id.appointment_date)).setText(date);
+            ((MaterialEditText) v.findViewById(R.id.leave_date)).setText(date);
 
             yearTest = year;
             monthTest = monthOfYear - 1;
             dayTest = dayOfMonth;
             calendar = Calendar.getInstance();
             calendar.set(yearTest, monthTest, dayTest, hourTest, minuteTest);
-            appointments.put(ParseTables.Appointment.DATE, calendar.getTime());
+            leaves.put(ParseTables.Leave.LEAVEDATE, calendar.getTime());
 
 
         }
@@ -282,54 +275,15 @@ public class CreateLeaveFragment extends Fragment {
 
     }
 
+}
+
     /**
      *This method creates a time picker used to set the time for an appointment and push it to Parse
      *
      */
-    public static class TimePickerFragment extends DialogFragment implements TimePickerDialog.OnTimeSetListener {
-
-        @Override
-        public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-
-            String time;
-            String min = Integer.toString(minute);
-            if (minute == 0) {
-                min = "00";
-            }
-            else {
-                min = "30";
-            }
-
-            if (hourOfDay > 12) {
-                hourOfDay = hourOfDay - 12;
-                time = String.valueOf(hourOfDay) + ":" + min + " pm";
-                hourTest = hourOfDay;
-
-            } else {
-                time = String.valueOf(hourOfDay) + ":" + min + " am";
-                hourTest = hourOfDay;
-
-            }
-
-
-            appointments.put(ParseTables.Appointment.TIME, time);
-            ((MaterialEditText) v.findViewById(R.id.appointment_time)).setText(time);
-        }
 
         /**
          *This method opens a dialog for the user to select a time.
          *
          */
 
-        @Override
-        public Dialog onCreateDialog(Bundle savedInstanceState) {
-            final Calendar c = Calendar.getInstance();
-            int hour = 9;
-            int minute = 0;
-            CustomTimePicker cusTimePicker = new CustomTimePicker(getActivity(),TimePickerDialog.THEME_HOLO_LIGHT ,this, hour, minute, DateFormat.is24HourFormat(getActivity()));
-
-
-            return cusTimePicker;
-        }
-    }
-}

@@ -23,8 +23,8 @@ import main.java.cz2006project.mojojo.Application.SampleApplication;
 import main.java.cz2006project.mojojo.Entity.Utils.NavigationDrawerFragment;
 
 /**
- * <h1>Patient Activity</h1>
- * The Patient Activity allows the patient to book appointments with doctors, search for doctors
+ * <h1>Patient Act</h1>
+ * The Patient Act allows the patient to book appointments with doctors, search for doctors
  * and clinics, edit their account etc. It is the starting activity for all patients using QwikDoc.
  *
  *
@@ -129,8 +129,8 @@ public class TeacherActivity extends ActionBarActivity
                         .commit();
                 break;
             case 2:
-                if (DEBUG) Log.d(TAG, "Activity fragment");
-                mTitle = "Activity";
+                if (DEBUG) Log.d(TAG, "Act fragment");
+                mTitle = "Act";
                 fragmentManager.beginTransaction()
                         .replace(R.id.container, new ListActivityFragment())
                         .commit();

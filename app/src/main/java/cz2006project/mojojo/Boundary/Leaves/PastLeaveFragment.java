@@ -28,7 +28,6 @@ import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.TimePicker;
-import android.widget.Toast;
 
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -42,7 +41,7 @@ import java.util.GregorianCalendar;
 import java.util.List;
 
 import cz2006project.mojojo.R;
-import main.java.cz2006project.mojojo.Entity.Appointment;
+import main.java.cz2006project.mojojo.Entity.Leave;
 import main.java.cz2006project.mojojo.External.ParseTables;
 import main.java.cz2006project.mojojo.Entity.Utils.CustomTimePicker;
 
@@ -76,7 +75,7 @@ public class PastLeaveFragment extends Fragment {
 
     public static Date date2= new Date();
 
-    public static Appointment appt= new Appointment();
+    public static Leave lev= new Leave();
     public static int yeartest, monthtest, daytest, hourtest, minutetest;
 
 
@@ -152,16 +151,16 @@ public class PastLeaveFragment extends Fragment {
     public class LeaveAdapter extends RecyclerView.Adapter<LeaveAdapter.ViewHolder> implements View.OnClickListener {
 
         private int expandedPosition = -1;
-        private List<ParseObject> appointments;
+        private List<ParseObject> leave;
 
         /**
          *
-         * This method instantiates a list of Parse Appointment Objects to populate the view.
+         * This method instantiates a list of Parse Leave Objects to populate the view.
          *
          */
 
         public LeaveAdapter(List<ParseObject> appointments) {
-            this.appointments = appointments;
+            this.leave = leave;
         }
 
         /**
@@ -190,10 +189,11 @@ public class PastLeaveFragment extends Fragment {
         @Override
         public void onBindViewHolder(final ViewHolder holder, int position) {
 
-            holder.teacher.setText("Teacher: " + (String)appointments.get(position).get(ParseTables.Leave.Teacher));
-            holder.type.setText("Leave Type " + (String)appointments.get(position).get(ParseTables.Leave.LeaveType));
-            holder.leave_date.setText(appointments.get(position).get(ParseTables.Leave.DATE)+" "+appointments.get(position).get(ParseTables.Appointment.TIME));
-            holder.leave_time.setText((String)appointments.get(position).get(ParseTables.Leave.TIME));
+            holder.teacher.setText("Teacher: " + (String)leave.get(position).get(ParseTables.Leave.TEACHER));
+            holder.type.setText("Leave Type " + (String) leave.get(position).get(ParseTables.Leave.LEAVETYPE));
+            holder.leave_date.setText("Leave Date" + (String) leave.get(position).get(ParseTables.Leave.LEAVEDATE));
+
+
 
 
 
@@ -216,7 +216,7 @@ public class PastLeaveFragment extends Fragment {
 
         @Override
         public int getItemCount() {
-            return appointments.size();
+            return leave.size();
         }
 
 
@@ -258,7 +258,7 @@ public class PastLeaveFragment extends Fragment {
             RelativeLayout expanded_area;
             TextView reason;
             TextView leave_date;
-            TextView leave_time;
+
             Button leave_followup;
 
 
@@ -276,21 +276,8 @@ public class PastLeaveFragment extends Fragment {
 
                 this.reason = (TextView) itemView.findViewById(R.id.notes);
                 this.leave_date = (TextView) itemView.findViewById(R.id.appointment_date);
-                this.leave_time = (TextView) itemView.findViewById(R.id.appointment_time);
-                this.leave_followup = (Button) itemView.findViewById(R.id.appointment_followup);
-
-                leave_followup.setOnClickListener(new View.OnClickListener() {
 
 
-                    @Override
-                    public void onClick(View v) {
-
-                        appt.put(ParseTables.Appointment.Teacher, appointments.get(getPosition()).get(ParseTables.Appointment.Teacher));
-                        appt.put(ParseTables.Appointment.LeaveType, appointments.get(getPosition()).get(ParseTables.Appointment.LeaveType));
-
-
-                        }
-                    });
             };
 
                
@@ -319,7 +306,7 @@ public class PastLeaveFragment extends Fragment {
 
 
 
-            Date date2 = appt.getDate("Date");
+            Date date2 = lev.getDate("Date");
 
 
             Calendar calendar = GregorianCalendar.getInstance();
@@ -330,9 +317,9 @@ public class PastLeaveFragment extends Fragment {
 
             calendar.set(year, monthOfYear, dayOfMonth, hourtest, minutetest);
 
-            appt.put("Date", calendar.getTime());
+            lev.put("Date", calendar.getTime());
 
-            appt.saveInBackground(/*new SaveCallback() {
+            lev.saveInBackground(/*new SaveCallback() {
                 @Override
                 public void done(ParseException e) {
 
@@ -379,58 +366,7 @@ public class PastLeaveFragment extends Fragment {
      *
      */
 
-    public static class TimePickerFragment extends DialogFragment implements TimePickerDialog.OnTimeSetListener {
 
-        @Override
-        public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-            String time;
-            String min = Integer.toString(minute);
-            if (minute == 0) {
-                min = "00";
-            }
-            else {
-                min = "30";
-            }
-
-            if (hourOfDay > 12) {
-                hourOfDay = hourOfDay - 12;
-                time = String.valueOf(hourOfDay) + ":" + min + " pm";
-            } else {
-                time = String.valueOf(hourOfDay) + ":" + min + " am";
-            }
-
-
-
-            Calendar calendar = GregorianCalendar.getInstance();
-
-            calendar.setTime(date2);
-            yeartest = calendar.get(Calendar.YEAR);
-            monthtest = calendar.get(Calendar.MONTH);
-            daytest = calendar.get(Calendar.DAY_OF_MONTH);
-            calendar.set(yeartest, monthtest, daytest, hourOfDay, minute);
-
-            appt.put("Date", calendar.getTime());
-            appt.put("time", time);
-
-
-        }
-
-        /**
-         *@return dialog to set time of follow-up appointment
-         *
-         */
-        @Override
-        public Dialog onCreateDialog(Bundle savedInstanceState) {
-            final Calendar c = Calendar.getInstance();
-            int hour = 9;
-            int minute = 0;
-            CustomTimePicker cusTimePicker = new CustomTimePicker(getActivity(), TimePickerDialog.THEME_HOLO_LIGHT, this, hour, minute, DateFormat.is24HourFormat(getActivity()));
-
-
-            return cusTimePicker;
-        }
-
-    }
 
 
     /**

@@ -44,8 +44,8 @@ import java.util.concurrent.TimeUnit;
 
 
 /**
- * <h1>Main Activity</h1>
- * The Main Activity is the starting point of the application. It starts the Parse Login Activity
+ * <h1>Main Act</h1>
+ * The Main Act is the starting point of the application. It starts the Parse Login Act
  * if the user is not already logged into QwikDoc or starts the TeacherActivity if the user is
  * already logged into QwikDoc.
  *
@@ -144,7 +144,7 @@ public class MainActivity extends Activity {
 
     public void sendMail() {
 
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("Appointment");
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Leave");
         query.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> appointmentList, ParseException e) {
                 if (e == null) {
@@ -177,7 +177,7 @@ public class MainActivity extends Activity {
 
                                                 try {
                                                     SmsManager smsManager = SmsManager.getDefault();
-                                                    smsManager.sendTextMessage(patient.getString("contactnumber"), null, "APPOINTMENT REMINDER! Please do be punctual for your Appointment", null, null);
+                                                    smsManager.sendTextMessage(patient.getString("contactnumber"), null, "APPOINTMENT REMINDER! Please do be punctual for your Leave", null, null);
 
                                                     appointment.put("ReminderSent", true);
                                                     appointment.saveInBackground();
@@ -193,7 +193,7 @@ public class MainActivity extends Activity {
 
                                                 Map<String, String> params = new HashMap<>();
                                                 params.put("text", "Dear " + patient.getString("name") + newline + newline + "Reminder for your upcoming appointment:" + newline + "Doctor: " + "Dr " + appointment.getString("doctor") + newline + "Clinic: " + appointment.getString("clinic") + newline + "Date: " + appointment.getDate("Date") + newline + newline + "Please do be punctual for your appointment!" + newline + "Regards," + newline + "The QwikDoc Team");
-                                                params.put("subject", "Appointment Reminder for " + patient.getString("name"));
+                                                params.put("subject", "Leave Reminder for " + patient.getString("name"));
                                                 params.put("fromEmail", "qwikdoc@hotmail.com");
                                                 params.put("fromName", "QwikDoc");
                                                 params.put("toEmail", patient.getEmail());

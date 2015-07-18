@@ -30,8 +30,8 @@
     <string name="title_section2">Section 2</string>
     <string name="title_section3">Section 3</string>
     <string name="title_activity_profile">Profile</string>
-    <string name="title_activity_search__doctor">Search_Doctor</string>
-    <string name="title_activity_upcomming_appointment">UpcommingAppointment</string>
+
+    <string name="title_activity_upcomming_leave">UpcommingLeave</string>
     <string name="title_activity_edit__profile">Edit_Profil</string>
     <string name="title_activity_main">QwikDoc</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -68,15 +68,18 @@
 
     <!-- Content Description -->
     <string name="desc_list_item_icon">Item Icon</string>
+<string name="teacher">Teacher</string>
 
-
-    <string name="appointment_created">Your appointment has been booked!</string>
+    <string name="leave_created">Your leave has been entered!</string>
     <string name="leave_type">Type of leave</string>
+    <string name="activity_type">Type of activity</string>
+    <string name="class_no">Class</string>
+    <string name="section_type">Section</string>
 
 
 
     <string name="medical_issue">Medical Issue</string>
-    <string name="notes">notes</string>
+    <string name="reason">reason</string>
     <string name="title_activity_patient_home_screen">PatientHomeScreen</string>
 
     <string-array name="leave_type_array">
@@ -84,8 +87,41 @@
     <item>Half Day</item>
     <item>Full Day</item>
 
-</string-array>
+    </string-array>
+    <string-array name="Activity_type_array">
+    <item>Assembly</item>
+    <item>Presentation</item>
+    <item>Annual Day</item>
+    <item>Sports week</item>
+    <item>Theme Party</item>
+    <item>Kiddies Kitchen</item>
+    </string-array>
 
+    <string-array name="Class_type_array">
+    <item>Class 1</item>
+    <item>Class 2</item>
+    <item>Class 3</item>
+    <item>Class 4</item>
+    <item>Class 5</item>
+    <item>Class 6</item>
+    <item>Class 7</item>
+    <item>Class 8</item>
+    <item>Class 9</item>
+    <item>Class 10</item>
+    <item>Class 11</item>
+    <item>Class 12</item>
+    </string-array>
+
+    <string-array name="Section_type_array">
+    <item>A</item>
+    <item>B</item>
+    <item>C</item>
+        <item>D</item>
+        <item>E</item>
+        <item>F</item>
+        <item>G</item>
+
+    </string-array>
 
     <string name="tab_date">Set Date</string>
     <string name="tab_time">Set Time</string>

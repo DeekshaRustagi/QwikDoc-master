@@ -31,7 +31,7 @@ import com.parse.Parse;
 import com.parse.ParseObject;
 
 import cz2006project.mojojo.R;
-import main.java.cz2006project.mojojo.Entity.Appointment;
+import main.java.cz2006project.mojojo.Entity.Leave;
 
 
 import android.graphics.drawable.ColorDrawable;
@@ -60,7 +60,7 @@ public class SampleApplication extends Application {
         ParseACL defaultACL = new ParseACL();
 
 
-        ParseObject.registerSubclass(Appointment.class);
+        ParseObject.registerSubclass(Leave.class);
     }
 
     public static void setCustomTheme(ActionBarActivity actionBarActivity, int primary, int secondary){

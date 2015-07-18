@@ -1,15 +1,5 @@
 package main.java.cz2006project.mojojo.External;
 
-/**
- * <h1>Parse Tables</h1>
- * These tables serve as a hashmap between our database, www.parse.com and our application.
- *
- * <p>
- *
- * @author  Dhruv Sharma
- * @version 1.0
- * @since   2014-03-31
- */
 public class ParseTables {
 
     /**

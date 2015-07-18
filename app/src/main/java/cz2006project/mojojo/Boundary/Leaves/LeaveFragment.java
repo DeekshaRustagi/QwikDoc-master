@@ -21,7 +21,7 @@ import main.java.cz2006project.mojojo.Application.SampleApplication;
 
 
 /**
- * <h1>Appointment Fragment</h1>
+ * <h1>Leave Fragment</h1>
  * This fragment calls and displays the appointment fragment classes using a switch statement
  *
  * @author Lee Sai Mun
@@ -57,7 +57,7 @@ public class LeaveFragment extends Fragment {
 
     /**
      * This method creates the view for the Appointments Fragment by calling the fragmentPagerAdapter
-     * and instantiating Upcoming Appointment, Create Appointment and Past Appointment
+     * and instantiating Upcoming Leave, Create Leave and Past Leave
      */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -89,7 +89,7 @@ public class LeaveFragment extends Fragment {
             }
 
             /**
-             * This method creates the title for Upcoming Appointment, Create Appointment and Past Appointment Fragments
+             * This method creates the title for Upcoming Leave, Create Leave and Past Leave Fragments
              */
             @Override
             public CharSequence getPageTitle(int position) {

@@ -44,7 +44,7 @@ public class MainTimeTableFragment {
 
     /**
      * This method creates the view for the Appointments Fragment by calling the fragmentPagerAdapter
-     * and instantiating Upcoming Appointment, Create Appointment and Past Appointment
+     * and instantiating Upcoming Leave, Create Leave and Past Leave
      */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -76,7 +76,7 @@ public class MainTimeTableFragment {
             }
 
             /**
-             * This method creates the title for Upcoming Appointment, Create Appointment and Past Appointment Fragments
+             * This method creates the title for Upcoming Leave, Create Leave and Past Leave Fragments
              */
             @Override
             public CharSequence getPageTitle(int position) {
@@ -84,7 +84,7 @@ public class MainTimeTableFragment {
                     case 0:
                         return "Upcoming Appointments";
                     case 1:
-                        return "Book new Appointment";
+                        return "Book new Leave";
                     case 2:
                         return "Past Appointments";
                 }

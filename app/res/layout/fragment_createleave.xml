@@ -16,6 +16,16 @@
             android:weightSum="7"
             android:orientation="vertical">
 
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:text="teacher"
+                android:hint="Enter Teacher's Name"
+                android:ems="10"
+                android:id="@+id/teacher"
+                android:layout_weight="1" />
+
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -29,50 +39,8 @@
                     android:layout_height="fill_parent"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
-                    android:hint="@string/appointment_type"
+                    android:hint="@string/leave_type"
                     />
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                >
-                <Spinner
-                    android:id="@+id/clinicspinner"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="10dp"
-                    android:layout_weight="1"
-                    android:hint="@string/clinic_name"
-                />
-
-
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                >
-                <Spinner
-                    android:id="@+id/doctorspinner"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="10dp"
-                    android:layout_weight="1"
-                    android:hint="@string/doctor_name"
-                    android:longClickable="false"
-                    android:spinnerMode="dialog"
-                    android:textSize="20sp"
-                    android:touchscreenBlocksFocus="false"
-                    android:minHeight="30dp"/>
-
 
 
             </LinearLayout>
@@ -92,7 +60,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:id="@+id/appointment_date"
+                    android:id="@+id/leave_date"
                     android:hint="click on date"
                     android:layout_margin="10dp"
                     android:editable="false"
@@ -111,36 +79,6 @@
                     />
 
             </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:orientation="horizontal"
-                android:layout_marginBottom="10dp"
-                android:layout_marginTop="10dp"
-                    >
-
-                <main.java.cz2006project.mojojo.Entity.Utils.MaterialEditText
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:id="@+id/appointment_time"
-                    android:hint="click on time"
-                    android:layout_margin="10dp"
-                    android:editable="false"
-                    />
-                <ImageButton
-                    android:layout_width="54dp"
-                    android:layout_height="54dp"
-                    android:layout_weight="0"
-                    android:text="Set Time"
-                    android:layout_margin="5dp"
-                    android:id="@+id/time_picker"
-                    android:layout_gravity="center"
-                    android:background="@drawable/clock"
-                    android:textColor="@android:color/white"
-                    />
-            </LinearLayout>
 
 
 
@@ -153,12 +91,12 @@
                 android:background="@drawable/abc_textfield_search_activated_mtrl_alpha">
 
                 <main.java.cz2006project.mojojo.Entity.Utils.MaterialEditText
-                    android:id="@+id/notes"
+                    android:id="@+id/reason"
                     android:layout_width="fill_parent"
                     android:layout_height= "100dp"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
-                    android:hint="Notes"
+                    android:hint="Reason"
                      />
             </LinearLayout>
 
@@ -171,7 +109,7 @@
                 android:layout_weight="1"
                 android:layout_gravity="bottom|center"
                 android:background="#ff2322e0"
-                android:text="Book Your Appointment Now!"
+                android:text="Enter Your Leave Now!"
                 android:textColor="@android:color/white" />
 
         </LinearLayout>

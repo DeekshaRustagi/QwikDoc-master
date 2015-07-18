@@ -12,8 +12,8 @@ import android.view.ViewGroup;
 import cz2006project.mojojo.R;
 import main.java.cz2006project.mojojo.Application.SampleApplication;
 
-import main.java.cz2006project.mojojo.Boundary.Leaves.ListActivityFragment;
-;
+
+
 
 
 public class ActivitiesFragment extends Fragment {
@@ -37,7 +37,7 @@ public class ActivitiesFragment extends Fragment {
     }
     /**
      * This method creates the view for the Appointments Fragment by calling the fragmentPagerAdapter
-     * and instantiating Upcoming Appointment, Create Appointment and Past Appointment
+     * and instantiating Upcoming Leave, Create Leave and Past Leave
      */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -60,7 +60,7 @@ public class ActivitiesFragment extends Fragment {
                     case 0:
                         return ListActivityFragment.newInstance(true);
                     case 1:
-                        return  AddActivityFragment();
+                        return AddActivityFragment();
 
 
                 }
@@ -68,15 +68,15 @@ public class ActivitiesFragment extends Fragment {
             }
 
             /**
-             * This method creates the title for Upcoming Appointment, Create Appointment and Past Appointment Fragments
+             * This method creates the title for Upcoming Leave, Create Leave and Past Leave Fragments
              */
             @Override
             public CharSequence getPageTitle(int position) {
                 switch (position) {
                     case 0:
-                        return "List of Activity";
+                        return "List of Act";
                     case 1:
-                        return "Add new Activity";
+                        return "Add new Act";
 
                 }
 
