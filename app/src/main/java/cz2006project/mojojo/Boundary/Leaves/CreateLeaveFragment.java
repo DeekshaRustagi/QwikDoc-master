@@ -147,12 +147,11 @@ public class CreateLeaveFragment extends Fragment {
 
 
     public void addInput() {
-        leaves.put(ParseTables.Leave.TEACHER,((EditText)v.findViewById(R.id.teacher)));
+
         leaves.put(ParseTables.Leave.TEACHER, ParseUser.getCurrentUser().getString("name"));
         leaves.put(ParseTables.Leave.LEAVETYPE, typespinner.getSelectedItem().toString());
-
-        leaves.put(ParseTables.Leave.REASON, ((MaterialEditText) v.findViewById(R.id.reason)).getText() + "");
-
+        leaves.put(ParseTables.Leave.REASON, ((MaterialEditText) v.findViewById(R.id.reason)).getText() );
+        leaves.put(ParseTables.Leave.LEAVEDATE,calendar.getTime());
 
     }
 
@@ -194,8 +193,6 @@ public class CreateLeaveFragment extends Fragment {
         calendar.set(yearTest, monthTest, dayTest, hourTest, minuteTest);
         leave.put(ParseTables.Leave.LEAVEDATE, calendar.getTime());
         leave.put(ParseTables.Leave.LEAVEDATE, leave.get(ParseTables.Leave.LEAVEDATE));
-
-
 
         leave.put(ParseTables.Leave.LEAVETYPE, leave.get(ParseTables.Leave.LEAVETYPE));
         leave.put(ParseTables.Leave.REASON, leave.get(ParseTables.Leave.REASON));

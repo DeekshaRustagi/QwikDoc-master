@@ -204,7 +204,7 @@ public class AddActivityFragment extends Fragment{
 
 
     public void addInput() {
-activity.put(ParseTables.Activity.COORDINATOR,(EditText)v.findViewById(R.id.coordinator));
+
         activity.put(ParseTables.Activity.COORDINATOR, ParseUser.getCurrentUser().getString("name"));
         activity.put(ParseTables.Activity.ACTIVITYTYPE, typespinner.getSelectedItem().toString());
         activity.put(ParseTables.Activity.CLASS, classspinner.getSelectedItem().toString());

@@ -154,7 +154,7 @@ public class ProfileFragment extends Fragment {
 
         ParseFile profileFile = null;
         if (currentUser != null) {
-            profileFile = currentUser.getParseFile(ParseTables.Users.IMAGE);
+            profileFile = currentUser.getParseFile(ParseTables.Users.NAME);
         }
         imageProfile.setParseFile(profileFile);
         imageProfile.loadInBackground();

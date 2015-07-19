@@ -14,7 +14,7 @@ import main.java.cz2006project.mojojo.Application.SampleApplication;
 
 /**
  * Created by Deeksha on 17-07-2015.
- */
+
 public class MainTimeTableFragment extends Fragment {
     ViewPager appointmentsPager;
     FragmentPagerAdapter fragmentPagerAdapter;
@@ -22,7 +22,7 @@ public class MainTimeTableFragment extends Fragment {
 
     /**
      * Default constructor for the LeaveFragment
-     */
+
     public MainTimeTableFragment() {
         // Required empty public constructor
     }
@@ -30,7 +30,7 @@ public class MainTimeTableFragment extends Fragment {
     /**
      * This constructor instantiates the fragment class with the arguments.
      * @return fragment
-     */
+
 
     public static MainTimeTableFragment newInstance() {
         MainTimeTableFragment fragment = new MainTimeTableFragment();
@@ -42,7 +42,7 @@ public class MainTimeTableFragment extends Fragment {
     /**
      * This method creates the view for the Appointments Fragment by calling the fragmentPagerAdapter
      * and instantiating Upcoming Leave, Create Leave and Past Leave
-     */
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,7 +73,7 @@ public class MainTimeTableFragment extends Fragment {
 
             /**
              * This method creates the title for Upcoming Leave, Create Leave and Past Leave Fragments
-             */
+
             @Override
             public CharSequence getPageTitle(int position) {
                 switch (position) {
@@ -89,7 +89,7 @@ public class MainTimeTableFragment extends Fragment {
 
             /**
              * This method returns the count of the fragments called by LeaveFragment.
-             */
+
             @Override
             public int getCount() {
                 return 2;
@@ -105,5 +105,5 @@ public class MainTimeTableFragment extends Fragment {
 
 
 }
-
+*/
 

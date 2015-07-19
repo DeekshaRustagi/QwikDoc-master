@@ -347,7 +347,7 @@ public class NavigationDrawerFragment extends Fragment {
 
             if (convertView == null) {
                 LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                rowView = inflater.inflate(R.layout.row_navigation_drawer, null);
+                rowView = inflater.inflate(R.layout.fragment_main_navigationdrawer, null);
             } else {
                 rowView = convertView;
             }
@@ -355,8 +355,8 @@ public class NavigationDrawerFragment extends Fragment {
            /* TextView ProfileName = (TextView) rowView.findViewById(R.id.ProfileName);
             ProfileName.setText(mCategoryMap[pos]);*/
 
-            ImageView navigationIcon = (ImageView) rowView.findViewById(R.id.icon_navigation);
-            TextView navigationTitle = (TextView) rowView.findViewById(R.id.title_navigation);
+            ImageView navigationIcon = (ImageView) rowView.findViewById(R.id.icon);
+            TextView navigationTitle = (TextView) rowView.findViewById(R.id.title);
 
             navigationTitle.setText(mCategoryMap[pos]);
             //navigationTitle.setTextColor(Color.WHITE);

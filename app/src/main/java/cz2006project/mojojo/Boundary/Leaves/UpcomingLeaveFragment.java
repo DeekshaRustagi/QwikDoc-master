@@ -41,10 +41,6 @@ import java.util.List;
 import cz2006project.mojojo.R;
 import main.java.cz2006project.mojojo.External.ParseTables;
 
-
-
-
-
 public class UpcomingLeaveFragment extends Fragment {
 
     RecyclerView LeaveList;
@@ -366,7 +362,7 @@ public class UpcomingLeaveFragment extends Fragment {
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.menu_search, menu);
+        inflater.inflate(R.menu.menu_main, menu);
     }
 
     @Override

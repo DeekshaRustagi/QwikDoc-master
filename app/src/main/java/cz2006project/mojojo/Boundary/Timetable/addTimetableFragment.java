@@ -1,4 +1,4 @@
-package main.java.cz2006project.mojojo.Boundary.Timetable;
+/*package main.java.cz2006project.mojojo.Boundary.Timetable;
 
 import android.support.v4.app.Fragment;
 
@@ -61,7 +61,6 @@ public class AddTimeTableFragment extends Fragment{
 
     /**
      * Default constructor for the AddActivityFragment
-     */
 
     public AddTimeTableFragment() {
         // Required empty public constructor
@@ -75,7 +74,7 @@ public class AddTimeTableFragment extends Fragment{
     }
     /**
      * This method instantiates a new hash map for Activity with the attributes for the hash map.
-     */
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -86,7 +85,7 @@ public class AddTimeTableFragment extends Fragment{
 
     /**
      * This method creates a view with all the required UI elements for the AddActivityFragment
-     */
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -172,7 +171,7 @@ public class AddTimeTableFragment extends Fragment{
 
     /**
      * This method adds input from the fragment view to the activity hash map.
-     */
+
 
 
     public void addInput() {
@@ -187,7 +186,7 @@ public class AddTimeTableFragment extends Fragment{
 
     /**
      * This method checks if any of the mandatory fields to book an activity have been left empty by the user.
-     */
+
 
     private boolean checkIfEmpty() {
 
@@ -254,7 +253,7 @@ public class AddTimeTableFragment extends Fragment{
     /**
      *This method creates a time picker used to set the time for an appointment and push it to Parse
      *
-     */
+
     public static class TimePickerFragment extends DialogFragment implements TimePickerDialog.OnTimeSetListener {
 
         @Override
@@ -287,10 +286,10 @@ public class AddTimeTableFragment extends Fragment{
 
         /**
          *This method opens a dialog for the user to select a time.
-         *
-         */
 
-        @Override
+
+
+
         public Dialog onCreateDialog(Bundle savedInstanceState) {
             final Calendar c = Calendar.getInstance();
             int hour = 9;
@@ -306,6 +305,4 @@ public class AddTimeTableFragment extends Fragment{
 
 
 }
-
-
-
+*/
