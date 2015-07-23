@@ -24,7 +24,7 @@
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="I am a doctor"
+            android:text="Activities"
             android:id="@+id/doctor"
             android:layout_gravity="center_horizontal"
             android:checked="false" />
