@@ -1,14 +1,11 @@
+
 /*package main.java.cz2006project.mojojo.Boundary.Timetable;
 
 import android.support.v4.app.Fragment;
-
-
-
-import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.app.Dialog;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
-
 import android.text.format.DateFormat;
 import android.text.format.Time;
 import android.view.LayoutInflater;
@@ -21,23 +18,19 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
-
 import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
-
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
-
 import cz2006project.mojojo.R;
 import main.java.cz2006project.mojojo.Entity.Timetable;
 import main.java.cz2006project.mojojo.External.ParseTables;
-
 import main.java.cz2006project.mojojo.Entity.Utils.MaterialEditText;
-import main.java.cz2006project.mojojo.Entity.Act;
-
+import android.widget.TimePicker;
+import main.java.cz2006project.mojojo.Entity.Utils.CustomTimePicker;
 
 public class AddTimeTableFragment extends Fragment{
 
@@ -97,7 +90,7 @@ public class AddTimeTableFragment extends Fragment{
 
         sectionspinner = (Spinner) v.findViewById(R.id.sectionspinner);
         teacher=(EditText)v.findViewById(R.id.teacher);
-        teacher=(EditText)v.findViewById(R.id.subject);
+        subject=(EditText)v.findViewById(R.id.subject);
 
         ArrayAdapter adapter3 = ArrayAdapter.createFromResource(getActivity(),
                 R.array.Class_type_array, android.R.layout.simple_spinner_item);
@@ -180,7 +173,7 @@ public class AddTimeTableFragment extends Fragment{
         timetable.put(ParseTables.TeacherSchedule.STRARTTIME,(Time)v.findViewById(R.id.startTime) );
         timetable.put(ParseTables.TeacherSchedule.CLASS, classspinner.getSelectedItem().toString());
         timetable.put(ParseTables.TeacherSchedule.SECTION, sectionspinner.getSelectedItem().toString());
-        timetable.put(ParseTables.TeacherSchedule.ENDTIME,(Time)v.findViewById(R.id.endTime));
+        timetable.put(ParseTables.TeacherSchedule.ENDTIME, (Time) v.findViewById(R.id.endTime));
 
     }
 
@@ -252,7 +245,7 @@ public class AddTimeTableFragment extends Fragment{
 
     /**
      *This method creates a time picker used to set the time for an appointment and push it to Parse
-     *
+
 
     public static class TimePickerFragment extends DialogFragment implements TimePickerDialog.OnTimeSetListener {
 
@@ -280,8 +273,11 @@ public class AddTimeTableFragment extends Fragment{
             }
 
 
-            appointments.put(ParseTables.Appointment.TIME, time);
-            ((MaterialEditText) v.findViewById(R.id.appointment_time)).setText(time);
+            time.put(ParseTables.TeacherSchedule.STRARTTIME, time);
+            ((MaterialEditText) v.findViewById(R.id.starttime)).setText(time);
+
+            time.put(ParseTables.TeacherSchedule.ENDTIME, time);
+            ((MaterialEditText) v.findViewById(R.id.endtime)).setText(time);
         }
 
         /**

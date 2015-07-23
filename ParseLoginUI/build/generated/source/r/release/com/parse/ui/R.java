@@ -328,8 +328,8 @@ containing a value of this type.
         public static int date=0x7f020036;
     }
     public static final class id {
-        public static int Email=0x7f0a0043;
-        public static int SMS=0x7f0a0042;
+        public static int Email=0x7f0a0044;
+        public static int SMS=0x7f0a0043;
         public static int bottom=0x7f0a0003;
         public static int box_count=0x7f0a0000;
         public static int button=0x7f0a0001;
@@ -360,7 +360,7 @@ containing a value of this type.
         public static int com_facebook_usersettingsfragment_logo_image=0x7f0a0023;
         public static int com_facebook_usersettingsfragment_profile_name=0x7f0a0024;
         public static int create_account=0x7f0a003c;
-        public static int date_picker=0x7f0a0040;
+        public static int date_picker=0x7f0a0041;
         public static int doctor=0x7f0a0034;
         public static int doctor_branch=0x7f0a003b;
         public static int doctor_specialty=0x7f0a003a;
@@ -368,6 +368,7 @@ containing a value of this type.
         public static int imageView=0x7f0a003d;
         public static int inline=0x7f0a0004;
         public static int large=0x7f0a0009;
+        public static int leave=0x7f0a0033;
         public static int left=0x7f0a0007;
         public static int login_help_email_input=0x7f0a002f;
         public static int login_help_instructions=0x7f0a002e;
@@ -380,14 +381,14 @@ containing a value of this type.
         public static int parse_login_button=0x7f0a002b;
         public static int parse_login_help=0x7f0a002d;
         public static int parse_signup_button=0x7f0a002c;
-        public static int patient=0x7f0a0033;
+        public static int patient=0x7f0a003e;
         public static int picker_subtitle=0x7f0a001b;
         public static int qwikdoc=0x7f0a0026;
-        public static int remindertext=0x7f0a0041;
+        public static int remindertext=0x7f0a0042;
         public static int right=0x7f0a0008;
-        public static int signup_DOB=0x7f0a003f;
+        public static int signup_DOB=0x7f0a0040;
         public static int signup_confirm_password_input=0x7f0a0037;
-        public static int signup_contactnumber_input=0x7f0a003e;
+        public static int signup_contactnumber_input=0x7f0a003f;
         public static int signup_email_input=0x7f0a0038;
         public static int signup_name_input=0x7f0a0039;
         public static int signup_password_input=0x7f0a0036;

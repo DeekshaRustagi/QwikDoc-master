@@ -29,7 +29,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
+import java.util.HashMap;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
@@ -65,7 +65,7 @@ public class ParseSignupFragment extends ParseLoginFragmentBase implements OnCli
     private CheckBox reminderByEmail;
     private TextView reminderText;
 
-    private static HashMap<String, String> users;
+    private static HashMap<String, String> Users;
     private ParseOnLoginSuccessListener onLoginSuccessListener;
     private RadioGroup userType;
     ImageButton setDate;
@@ -77,10 +77,10 @@ public class ParseSignupFragment extends ParseLoginFragmentBase implements OnCli
     ParseUser user = new ParseUser();
 
 
-    private RadioButton doctor, patient;
+    private RadioButton doctor, Leaves;
 
     public void onCreate(Bundle savedInstanceState) {
-        users = new HashMap<>();
+        user = new ParseUser();
         super.onCreate(savedInstanceState);
     }
 
@@ -260,7 +260,7 @@ public class ParseSignupFragment extends ParseLoginFragmentBase implements OnCli
 
         nameField = (EditText) v.findViewById(R.id.signup_name_input);
         userType = (RadioGroup) v.findViewById(R.id.signup_radio_type);
-        patient = (RadioButton) v.findViewById(R.id.patient);
+        Leaves = (RadioButton) v.findViewById(R.id.leave);
         doctor = (RadioButton) v.findViewById(R.id.doctor);
         reminderByEmail = (CheckBox) v.findViewById(R.id.Email);
         reminderBySMS = (CheckBox) v.findViewById(R.id.SMS);
@@ -315,8 +315,8 @@ public class ParseSignupFragment extends ParseLoginFragmentBase implements OnCli
                 }
                 String type = null;
                 int selectedId = userType.getCheckedRadioButtonId();
-                if (selectedId == patient.getId()) {
-                    type = "Patient";
+                if (selectedId == Leaves.getId()) {
+                    type = "Leaves";
 
                 } else if (selectedId == doctor.getId()) {
                     type = "Doctor";

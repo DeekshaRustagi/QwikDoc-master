@@ -17,8 +17,8 @@
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="I am a patient"
-            android:id="@+id/patient"
+            android:text="Leave"
+            android:id="@+id/leave"
             android:checked="true" />
 
         <RadioButton
