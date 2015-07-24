@@ -17,12 +17,12 @@
         >
 
         <TextView
-            android:id="@+id/activity_date"
+            android:id="@+id/leave_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:gravity="center"
-            android:text="Name"
+            android:text="Date"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="#000000" />
 
@@ -33,66 +33,38 @@
             android:id="@+id/expanded_area"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/appointment_date"
+            android:layout_below="@+id/leave_date"
             android:orientation="horizontal"
             android:visibility="gone">
 
             <TextView
-                android:id="@+id/appointment_type"
+                android:id="@+id/leave_type"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:gravity="center"
-                android:text="Name"
+                android:text="leave Type"
                 android:textColor="#000000"
                 android:textSize="17dp" />
 
 
             <TextView
-                android:id="@+id/clinic"
+                android:id="@+id/teacher"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:layout_below="@+id/appointment_type"
+                android:layout_below="@+id/leave_type"
                 android:gravity="center"
-                android:text="Type"
-                android:textColor="#000000"
-                android:textSize="17dp" />
-            <TextView
-                android:id="@+id/doctor"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:layout_below="@+id/clinic"
-                android:gravity="center"
-                android:text="Type"
+                android:text="Teacher"
                 android:textColor="#000000"
                 android:textSize="17dp" />
 
-            <TextView
-                android:id="@+id/appointment_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:layout_below="@+id/doctor"
-                android:gravity="center"
-                android:text="Appointment Time:"
-                android:textColor="#000000"
-                android:textSize="17dp" />
 
-            <Button
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/appointment_followup"
-                android:layout_below="@+id/appointment_time"
-                android:visibility="gone"
-                android:text="Follow Up Appointment"
-                android:textColor="#ffffffff"
-                android:background="#ffff8392"
-                android:textAlignment="center"
-                android:textSize="17dp"
-                android:gravity="center|bottom|top"
-                android:elegantTextHeight="false"/>
+
+
+
+
+
 
 
         </RelativeLayout>

@@ -7,12 +7,17 @@
     android:paddingBottom="@dimen/com_parse_ui_vertical_margin"
     android:gravity="center"
     android:orientation="vertical"
-    android:background="#fff0f3e6">
+    android:background="#ffffff">
 
-    <include
-        layout="@layout/com_parse_ui_parse_login_app_logo"
+    <ImageView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/helpgur"
+        android:layout_gravity="center"
         android:layout_width="181dp"
-        android:layout_height="161dp" />
+        android:layout_height="161dp"
+        android:src="@drawable/logo"
+        android:contentDescription="@string/com_parse_ui_logo_content_description"
+        android:focusableInTouchMode="false" />
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -26,4 +31,4 @@
         <include layout="@layout/com_parse_ui_parse_login_third_party_section" />
     </LinearLayout>
 </LinearLayout>
-<!-- From: file:/Users/srishti/Downloads/QwikDoc/ParseLoginUI/res/layout/com_parse_ui_parse_login_fragment.xml --><!-- From: file:/Users/srishti/Downloads/QwikDoc/ParseLoginUI/build/intermediates/bundles/debug/res/layout/com_parse_ui_parse_login_fragment.xml -->
+<!-- From: file:/C:/Users/Deeksha/AndroidStudioProjects/QwikDoc-master/ParseLoginUI/res/layout/com_parse_ui_parse_login_fragment.xml --><!-- From: file:/C:/Users/Deeksha/AndroidStudioProjects/QwikDoc-master/ParseLoginUI/build/intermediates/bundles/debug/res/layout/com_parse_ui_parse_login_fragment.xml -->

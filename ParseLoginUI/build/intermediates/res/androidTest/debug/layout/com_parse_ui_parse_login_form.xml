@@ -5,7 +5,7 @@
     android:gravity="center"
     android:id="@+id/parse_login"
     android:visibility="gone"
-    android:background="#fff0f3e6"
+    android:background="#ffffff"
     android:clickable="false">
 
 
@@ -32,14 +32,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/com_parse_ui_large_vertical_spacing"
-        android:background="#fff0f3e6">
+        android:background="#ffffff">
 
         <Button
             android:id="@+id/parse_login_button"
             style="@style/ParseLoginUI.Button"
             android:layout_weight="0.5"
             android:text="@string/com_parse_ui_parse_login_button_label"
-            android:background="#ff2322e0" />
+            android:background="#ffe07d93" />
 
         <Button
             android:id="@+id/parse_signup_button"
@@ -47,7 +47,7 @@
             android:layout_marginLeft="@dimen/com_parse_ui_small_horizontal_spacing"
             android:layout_weight="0.5"
             android:text="@string/com_parse_ui_parse_signup_button_label"
-            android:background="#ff2322e0" />
+            android:background="#ffe07d93" />
     </LinearLayout>
 
     <Button
@@ -58,4 +58,4 @@
         android:text="@string/com_parse_ui_forgot_password_button_label"
         android:textColor="#ff2322ff" />
 </LinearLayout>
-<!-- From: file:/Users/srishti/Downloads/QwikDoc/ParseLoginUI/res/layout/com_parse_ui_parse_login_form.xml --><!-- From: file:/Users/srishti/Downloads/QwikDoc/ParseLoginUI/build/intermediates/bundles/debug/res/layout/com_parse_ui_parse_login_form.xml -->
+<!-- From: file:/C:/Users/Deeksha/AndroidStudioProjects/QwikDoc-master/ParseLoginUI/res/layout/com_parse_ui_parse_login_form.xml --><!-- From: file:/C:/Users/Deeksha/AndroidStudioProjects/QwikDoc-master/ParseLoginUI/build/intermediates/bundles/debug/res/layout/com_parse_ui_parse_login_form.xml -->

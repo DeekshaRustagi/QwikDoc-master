@@ -240,7 +240,7 @@ public class PastLeaveFragment extends Fragment {
                 super(itemView);
 
                 this.teacher = (TextView) itemView.findViewById(R.id.teacher);
-                this.type = (TextView) itemView.findViewById(R.id.doctor);
+                this.type = (TextView) itemView.findViewById(R.id.leave_type);
                 this.expanded_area = (RelativeLayout) itemView.findViewById(R.id.expanded_area);
 
                 this.reason = (TextView) itemView.findViewById(R.id.reason);
@@ -326,12 +326,6 @@ public class PastLeaveFragment extends Fragment {
         }
     }
 
-    /**
-     *This method creates a time picker used to set the date for an leaves and push it to Parse
-     *
-     */
-
-
 
 
     /**
@@ -380,7 +374,7 @@ public class PastLeaveFragment extends Fragment {
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.menu_main, menu);
+        inflater.inflate(R.menu.menu_search, menu);
     }
 
     @Override

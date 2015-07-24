@@ -32,7 +32,7 @@ import main.java.cz2006project.mojojo.Application.SampleApplication;
 
 public class LeaveFragment extends Fragment {
 
-    ViewPager appointmentsPager;
+    ViewPager leavesPager;
     FragmentPagerAdapter fragmentPagerAdapter;
 
 
@@ -68,7 +68,7 @@ public class LeaveFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_appointments, container, false);
+        View view = inflater.inflate(R.layout.fragment_leaves, container, false);
         int p = getActivity().getResources().getColor(R.color.eventsColorPrimary);
         int s = getActivity().getResources().getColor(R.color.eventsColorPrimaryDark);
         SampleApplication.setCustomTheme((ActionBarActivity) getActivity(), p, s);
@@ -114,9 +114,9 @@ public class LeaveFragment extends Fragment {
             }
         };
 
-        appointmentsPager = (ViewPager) view.findViewById(R.id.appointments_pager);
-        appointmentsPager.setAdapter(fragmentPagerAdapter);
-        appointmentsPager.setOffscreenPageLimit(2);
+       leavesPager = (ViewPager) view.findViewById(R.id.leaves_pager);
+        leavesPager.setAdapter(fragmentPagerAdapter);
+        leavesPager.setOffscreenPageLimit(2);
         return view;
     }
 

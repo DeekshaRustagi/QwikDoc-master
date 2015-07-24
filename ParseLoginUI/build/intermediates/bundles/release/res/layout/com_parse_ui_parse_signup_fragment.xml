@@ -22,21 +22,6 @@
             android:layout_height="wrap_content" >
 
 
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="I am a patient"
-                android:id="@+id/patient"
-                android:checked="false" />
-
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="I am a doctor"
-                android:id="@+id/doctor"
-                android:layout_gravity="center_horizontal"
-                android:checked="false" />
-
         </RadioGroup>
         <EditText
             android:id="@+id/signup_username_input"

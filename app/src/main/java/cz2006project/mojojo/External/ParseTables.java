@@ -6,8 +6,8 @@ public class ParseTables {
      * Users class in Parse that stores all user information
      */
 
-    public static class Users {
-        public static final String NAME = "name";
+    public static class User {
+        public static final String NAME = "username";
         public static final String USERNAME = "email";
         public static final String PASSWORD = "password";
 

@@ -8,13 +8,13 @@
     <string name="twitter_consumer_key">kgGE1YO9z5O54nqVszgl8ygxu</string>
     <string name="twitter_consumer_secret">UfxrnkacWgI1FY0ljbh0a7zaZdnymT4p1WPg0Aci9xF6tRbBK1</string>
 
-    <string name="app_name">Mojojo</string>
+    <string name="app_name">HELPGURU</string>
     <string name="profile_logo_content_description">Logo</string>
     <string name="profile_title_logged_in">Your are logged in as %1$s</string>
     <string name="profile_logout_button_label">Log out</string>
     <string name="profile_title_logged_out">You must be logged in to view your profile</string>
     <string name="profile_login_button_label">Log in</string>
-    <string name="title_activity_appointment_ui">AppointmentUI</string>
+    <string name="title_activity_appointment_ui">LeaveUI</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
@@ -40,7 +40,7 @@
     <string name="logout">Log Out</string>
     <string name="profile">My Profile</string>
     <string name="leaves">Leaves</string>
-    <string name="scheduled_appointments">Scheduled Appointments</string>
+    <string name="scheduled_leaves">Scheduled Leaves</string>
     <string name="patient_medical_records">Search</string>
 
 

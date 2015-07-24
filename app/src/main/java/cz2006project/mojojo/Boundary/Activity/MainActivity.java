@@ -75,7 +75,7 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if (currentUser != null && currentUser.getString("type").equals("Leaves") ) {
+        if (currentUser != null)  {
 
             Intent teacherIntent = new Intent(this, TeacherActivity.class);
             startActivity(teacherIntent);
@@ -196,10 +196,11 @@ public class MainActivity extends Activity {
                                             params.put("text", "Dear " + teacher.getString("name") + newline + newline + "Reminder for your upcoming leave:" + newline + "Teacher "  + leave.getString("Teacher")  + newline + "Date: " + leave.getDate("LeaveDate") + newline );
                                             params.put("subject", "Leave Reminder for " + teacher.getString("name"));
                                             params.put("fromEmail", "qwikdoc@hotmail.com");
-                                            params.put("fromName", "QwikDoc");
+                                            params.put("fromName", "HELPGURU");
                                             params.put("toEmail", teacher.getEmail());
 
-                                            params.put("toName", teacher.getString("name"));
+                                            params.put("toName", teacher.getString("" +
+                                                    "name"));
 
 
                                             ParseCloud.callFunctionInBackground("sendMail", params, new FunctionCallback<Object>() {

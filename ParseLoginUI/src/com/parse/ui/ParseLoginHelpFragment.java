@@ -68,7 +68,7 @@ public class ParseLoginHelpFragment extends ParseLoginFragmentBase implements On
 
     View v = inflater.inflate(R.layout.com_parse_ui_parse_login_help_fragment,
         parent, false);
-    ImageView appLogo = (ImageView) v.findViewById(R.id.qwikdoc);
+    ImageView appLogo = (ImageView) v.findViewById(R.id.helpguru);
     instructionsTextView = (TextView) v
         .findViewById(R.id.login_help_instructions);
     emailField = (EditText) v.findViewById(R.id.login_help_email_input);

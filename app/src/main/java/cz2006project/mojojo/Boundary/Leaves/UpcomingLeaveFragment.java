@@ -101,7 +101,7 @@ public class UpcomingLeaveFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        v = inflater.inflate(R.layout.fragments_upcoming_activity_list, container, false);
+        v = inflater.inflate(R.layout.fragments_upcoming_leave_list, container, false);
         LeaveList = (RecyclerView) v.findViewById(R.id.listviewleave);
       LeaveMainLayout = (LinearLayout) v.findViewById(R.id.leave_main_list);
         emptyLeaves = (ScrollView) v.findViewById(R.id.empty_leave);
@@ -235,14 +235,11 @@ public class UpcomingLeaveFragment extends Fragment {
 
             public ViewHolder(View itemView) {
                 super(itemView);
-
                 this.type = (TextView) itemView.findViewById(R.id.leave_type);
                 this.teacher = (TextView) itemView.findViewById(R.id.teacher);
                 this.expanded_area = (RelativeLayout) itemView.findViewById(R.id.expanded_area);
-
                 this.reason = (TextView) itemView.findViewById(R.id.reason);
                 this.leave_date = (TextView) itemView.findViewById(R.id.leave_date);
-
                 this.leave_delete = (Button) itemView.findViewById(R.id.leave_delete);
                 this.leave_changedate = (Button) itemView.findViewById(R.id.leave_changedate);
 
@@ -328,7 +325,7 @@ public class UpcomingLeaveFragment extends Fragment {
                 "Leave");
 
         if (check_my_leaves) {
-            query.whereEqualTo("teacher", ParseUser.getCurrentUser().getString("name"));
+            query.whereEqualTo("Teacher", ParseUser.getCurrentUser().getString("username"));
             Calendar currentDate = Calendar.getInstance();
             Date current = currentDate.getTime();
             query.whereGreaterThanOrEqualTo("Date", current);
@@ -362,7 +359,7 @@ public class UpcomingLeaveFragment extends Fragment {
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.menu_main, menu);
+        inflater.inflate(R.menu.menu_search, menu);
     }
 
     @Override

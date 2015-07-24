@@ -30,7 +30,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.HashMap;
-import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
@@ -48,7 +47,7 @@ import java.util.List;
 /**
  * Fragment for the user signup screen.
  */
-public class ParseSignupFragment extends ParseLoginFragmentBase implements OnClickListener, RadioGroup.OnCheckedChangeListener, AdapterView.OnItemLongClickListener {
+public class ParseSignupFragment extends ParseLoginFragmentBase implements OnClickListener, AdapterView.OnItemLongClickListener {
     public static final String USERNAME = "com.parse.ui.ParseSignupFragment.USERNAME";
     public static final String PASSWORD = "com.parse.ui.ParseSignupFragment.PASSWORD";
     static View v;
@@ -58,26 +57,24 @@ public class ParseSignupFragment extends ParseLoginFragmentBase implements OnCli
     private EditText emailField;
     private EditText nameField;
     private EditText contactnumberField;
-    private Spinner doctor_specialty;
-    private Spinner doctor_branch;
+
     private Button createAccountButton;
     private CheckBox reminderBySMS;
     private CheckBox reminderByEmail;
     private TextView reminderText;
 
-    private static HashMap<String, String> Users;
+    private static HashMap<String, String> User;
     private ParseOnLoginSuccessListener onLoginSuccessListener;
-    private RadioGroup userType;
+
     ImageButton setDate;
     public EditText signup_DOB;
     public ArrayAdapter<String> adapter_specialty, adapter_branch;
     private DatePicker dp;
-    private List<String> specialtylist = new ArrayList();
-    private List<String> cliniclist = new ArrayList();
+
     ParseUser user = new ParseUser();
 
 
-    private RadioButton doctor, Leaves;
+
 
     public void onCreate(Bundle savedInstanceState) {
         user = new ParseUser();
@@ -90,7 +87,6 @@ public class ParseSignupFragment extends ParseLoginFragmentBase implements OnCli
     private static final String LOG_TAG = "ParseSignupFragment";
     private static final int DEFAULT_MIN_PASSWORD_LENGTH = 6;
     private static final String USER_OBJECT_NAME_FIELD = "name";
-    private static final String USER_OBJECT_TYPE_FIELD = "type";
     private static final String USER_CN_TYPE_FIELD = "contactnumber";
 
 
@@ -111,23 +107,7 @@ public class ParseSignupFragment extends ParseLoginFragmentBase implements OnCli
                 parent, false);
 
 
-        userType = (RadioGroup) v.findViewById(R.id.signup_radio_type);
-        userType.setOnCheckedChangeListener(this);
-        doctor_specialty = (Spinner) v.findViewById(R.id.doctor_specialty);
-        doctor_branch = (Spinner) v.findViewById(R.id.doctor_branch);
-        actv(false);
 
-
-
-
-        doctor_specialty.setVisibility(View.INVISIBLE);
-        doctor_branch.setVisibility(View.INVISIBLE);
-
-        doctor_specialty.setEnabled(false);
-        doctor_specialty.setFocusable(false);
-
-        doctor_branch.setEnabled(false);
-        doctor_branch.setFocusable(false);
 
         setDate=  (ImageButton) v.findViewById(R.id.date_picker);
         signup_DOB= (EditText) v.findViewById(R.id.signup_DOB);
@@ -140,105 +120,6 @@ public class ParseSignupFragment extends ParseLoginFragmentBase implements OnCli
             }
         });
 
-
-
-
-        final ParseQuery<ParseObject> query = ParseQuery.getQuery("Specialty");
-
-
-        query.findInBackground(new FindCallback<ParseObject>() {
-
-            @Override
-            public void done(List<ParseObject> clinics, ParseException e) {
-                // The query returns a list of objects from the "questions" class
-                if (e == null) {
-                    for (ParseObject clinic : clinics) {
-                        // Get the questionTopic value from the question object
-                        String clinicname = clinic.getString("specialtyName");
-                        specialtylist.add(clinicname);
-                        adapter_specialty = new ArrayAdapter(getActivity(), android.R.layout.simple_spinner_item, specialtylist);
-                        adapter_specialty.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                        doctor_specialty.setAdapter(adapter_specialty);
-
-                    }
-
-                } else {
-
-                }
-
-
-
-                doctor_specialty.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-
-                    @Override
-                    public void onItemSelected(AdapterView<?> arg0, View arg1,
-                                               int arg2, long arg3) {
-                        // TODO Auto-generated method stub
-                    }
-                        public void onNothingSelected (AdapterView < ? > parent){
-                        }
-
-                });
-
-
-            }
-        });
-
-
-
-
-        final ParseQuery<ParseObject> query1 = ParseQuery.getQuery("Clinic");
-
-
-        query1.findInBackground(new FindCallback<ParseObject>() {
-
-            @Override
-            public void done(List<ParseObject> area, ParseException e) {
-                // The query returns a list of objects from the "questions" class
-                if (e == null) {
-                    for (ParseObject areaName : area) {
-                        // Get the questionTopic value from the question object
-                        String location = areaName.getString("Location");
-                        cliniclist.add(location);
-                        adapter_branch = new ArrayAdapter(getActivity(), android.R.layout.simple_spinner_item, cliniclist);
-                        adapter_branch.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                        doctor_branch.setAdapter(adapter_branch);
-
-                    }
-
-                } else {
-
-                }
-
-
-
-                doctor_branch.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-
-                    @Override
-                    public void onItemSelected(AdapterView<?> arg0, View arg1,
-                                               int arg2, long arg3) {
-                        // TODO Auto-generated method stub
-                    }
-
-                    public void onNothingSelected(AdapterView<?> parent) {
-                    }
-                });
-
-
-            }
-        });
-
-        doctor_branch.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-            }
-
-            public void onNothingSelected(AdapterView<?> parent) {
-                // TODO Auto-generated method stub
-
-            }
-        });
         Bundle args = getArguments();
         config = ParseLoginConfig.fromBundle(args, getActivity());
 
@@ -251,7 +132,7 @@ public class ParseSignupFragment extends ParseLoginFragmentBase implements OnCli
         String password =  args.getString(PASSWORD);
 
 
-        ImageView appLogo = (ImageView) v.findViewById(R.id.qwikdoc);
+        ImageView appLogo = (ImageView) v.findViewById(R.id.helpguru);
         usernameField = (EditText) v.findViewById(R.id.signup_username_input);
         passwordField = (EditText) v.findViewById(R.id.signup_password_input);
         confirmPasswordField = (EditText) v.findViewById(R.id.signup_confirm_password_input);
@@ -259,9 +140,7 @@ public class ParseSignupFragment extends ParseLoginFragmentBase implements OnCli
         contactnumberField = (EditText) v.findViewById(R.id.signup_contactnumber_input);
 
         nameField = (EditText) v.findViewById(R.id.signup_name_input);
-        userType = (RadioGroup) v.findViewById(R.id.signup_radio_type);
-        Leaves = (RadioButton) v.findViewById(R.id.leave);
-        doctor = (RadioButton) v.findViewById(R.id.doctor);
+
         reminderByEmail = (CheckBox) v.findViewById(R.id.Email);
         reminderBySMS = (CheckBox) v.findViewById(R.id.SMS);
         reminderText = (TextView) v.findViewById(R.id.remindertext);
@@ -313,15 +192,6 @@ public class ParseSignupFragment extends ParseLoginFragmentBase implements OnCli
                 if (contactnumberField != null) {
                     contactnumber = contactnumberField.getText().toString();
                 }
-                String type = null;
-                int selectedId = userType.getCheckedRadioButtonId();
-                if (selectedId == Leaves.getId()) {
-                    type = "Leaves";
-
-                } else if (selectedId == doctor.getId()) {
-                    type = "Doctor";
-                }
-
 
                 if (username.length() == 0) {
                     if (config.isParseLoginEmailAsUsername()) {
@@ -373,13 +243,7 @@ public class ParseSignupFragment extends ParseLoginFragmentBase implements OnCli
                     if (contactnumber.length() != 0) {
                         user.put("contactnumber", contactnumber);
                     }
-                    if (userType != null) {
-                        user.put(USER_OBJECT_TYPE_FIELD, type);
-                    }
-                    if (userType.getCheckedRadioButtonId() == R.id.doctor) {
-                        user.put("Specialty", doctor_specialty.getSelectedItem().toString());
-                        user.put("CLINIC", doctor_branch.getSelectedItem().toString());
-                    }
+
 
                     loadingStart();
                     user.signUpInBackground(new SignUpCallback() {
@@ -487,36 +351,6 @@ public class ParseSignupFragment extends ParseLoginFragmentBase implements OnCli
         onLoginSuccessListener.onLoginSuccess();
     }
 
-    @Override
-    public void onCheckedChanged(RadioGroup group, int checkedId) {
-
-        if (checkedId == R.id.patient) {
-            doctor_specialty.setVisibility(View.INVISIBLE);
-            doctor_branch.setVisibility(View.INVISIBLE);
-            reminderByEmail.setVisibility(View.VISIBLE);
-            reminderBySMS.setVisibility(View.VISIBLE);
-            reminderText.setVisibility(View.VISIBLE);
-
-            actv(false);
-        } else if (checkedId == R.id.doctor) {
-            doctor_specialty.setVisibility(View.VISIBLE);
-            doctor_branch.setVisibility(View.VISIBLE);
-            reminderByEmail.setVisibility(View.INVISIBLE);
-            reminderBySMS.setVisibility(View.INVISIBLE);
-            reminderText.setVisibility(View.INVISIBLE);
-
-            actv(true);
-        }
-    }
-
-    private void actv(final boolean active) {
-        doctor_specialty.setEnabled(active);
-        doctor_branch.setEnabled(active);
-        if (active) {
-            doctor_specialty.requestFocus();
-            doctor_branch.requestFocus();
-        }
-    }
 
     public void addListenerOnChkSMS() {
 
@@ -549,7 +383,7 @@ public class ParseSignupFragment extends ParseLoginFragmentBase implements OnCli
 
             @Override
             public void onClick(View v) {
-                //is chkIos checked?
+
                 if (((CheckBox) v).isChecked()) {
 
 

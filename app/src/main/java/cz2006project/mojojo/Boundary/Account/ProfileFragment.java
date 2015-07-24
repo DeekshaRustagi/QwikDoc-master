@@ -141,12 +141,12 @@ public class ProfileFragment extends Fragment {
     private void fetchInfoFromParse() throws Exception {
         ParseUser currentUser = ParseUser.getCurrentUser();
         if (currentUser != null) {
-            if (currentUser.get(ParseTables.Users.USERNAME) != null)
-                tEmail.setText(currentUser.getString(ParseTables.Users.USERNAME));
+            if (currentUser.get(ParseTables.User.USERNAME) != null)
+                tEmail.setText(currentUser.getString(ParseTables.User.USERNAME));
 
 
-            if (currentUser.get(ParseTables.Users.NAME) != null)
-                tFullName.setText(currentUser.getString(ParseTables.Users.NAME));
+            if (currentUser.get(ParseTables.User.NAME) != null)
+                tFullName.setText(currentUser.getString(ParseTables.User.NAME));
 
         } else {
             //TODO: handle errors if any generated
@@ -154,7 +154,7 @@ public class ProfileFragment extends Fragment {
 
         ParseFile profileFile = null;
         if (currentUser != null) {
-            profileFile = currentUser.getParseFile(ParseTables.Users.NAME);
+            profileFile = currentUser.getParseFile(ParseTables.User.NAME);
         }
         imageProfile.setParseFile(profileFile);
         imageProfile.loadInBackground();
@@ -227,7 +227,7 @@ public class ProfileFragment extends Fragment {
 
                 switch (v.getId()) {
                     case R.id.edit_email_button:
-                        changeAttribute(eEmail, ParseTables.Users.USERNAME);
+                        changeAttribute(eEmail, ParseTables.User.USERNAME);
                         canEditEmail.setVisibility(View.INVISIBLE);
                         break;
 
@@ -337,7 +337,7 @@ public class ProfileFragment extends Fragment {
 
 
     private void changeAttribute(EditText et, final String attr) {
-        if (attr.equals(ParseTables.Users.USERNAME) || attr.equals(ParseTables.Users.NAME)) {
+        if (attr.equals(ParseTables.User.USERNAME) || attr.equals(ParseTables.User.NAME)) {
             if (et.getText().toString().isEmpty())
                 Toast.makeText(getActivity(), attr + "cannot be empty", Toast.LENGTH_LONG).show();
         }

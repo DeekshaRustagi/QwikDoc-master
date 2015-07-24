@@ -22,21 +22,6 @@
             android:layout_height="wrap_content" >
 
 
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="I am a patient"
-                android:id="@+id/patient"
-                android:checked="false" />
-
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="I am a doctor"
-                android:id="@+id/doctor"
-                android:layout_gravity="center_horizontal"
-                android:checked="false" />
-
         </RadioGroup>
         <EditText
             android:id="@+id/signup_username_input"
@@ -85,19 +70,27 @@
             android:hint="@string/com_parse_ui_name_input_hint"
             android:inputType="textPersonName" />
 
+        <EditText
+            android:id="@+id/signup_contactnumber_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/ParseLoginUI.EditText"
+            android:layout_marginTop="@dimen/com_parse_ui_small_vertical_spacing"
+            android:hint="Contact Number"
+            android:inputType="textPersonName" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
                 <EditText
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_width="315dp"
+                android:layout_height="49dp"
+                style="@style/ParseLoginUI.EditText"
                 android:id="@+id/signup_DOB"
-                android:hint="Enter the Date of Birth"
-                android:layout_margin="10dp"
-                android:editable="false"
-                />
+                android:hint="Date of Birth"
+               android:editable="false" />
+
             <ImageButton
                 android:layout_width="54dp"
                 android:layout_height="54dp"
@@ -112,6 +105,30 @@
             </ImageButton>
 
         </LinearLayout>
+
+        <TextView
+            android:layout_width="367dp"
+            android:layout_height="29dp"
+            android:text="Receiver reminders by:"
+            android:id="@+id/remindertext"
+            android:textSize="18dp" />
+
+        <CheckBox
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SMS"
+            android:id="@+id/SMS"
+            android:checked="true"
+            />
+
+        <CheckBox
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Email"
+            android:id="@+id/Email"
+            android:checked="true"
+            />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -144,4 +161,4 @@
             android:background="#ff2322e0"/>
 
     </LinearLayout>
-</ScrollView><!-- From: file:/C:/Users/Dhruv/Desktop/Mojojo/ParseLoginUI/res/layout/com_parse_ui_parse_signup_fragment.xml -->
+</ScrollView><!-- From: file:/C:/Users/Deeksha/AndroidStudioProjects/QwikDoc-master/ParseLoginUI/res/layout/com_parse_ui_parse_signup_fragment.xml -->

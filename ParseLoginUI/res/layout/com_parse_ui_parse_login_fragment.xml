@@ -10,11 +10,11 @@
     android:background="#ffffff">
 
     <ImageView xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/qwikdoc"
+        android:id="@+id/helpgur"
         android:layout_gravity="center"
         android:layout_width="181dp"
         android:layout_height="161dp"
-        android:src="@drawable/app_logo"
+        android:src="@drawable/logo"
         android:contentDescription="@string/com_parse_ui_logo_content_description"
         android:focusableInTouchMode="false" />
 
