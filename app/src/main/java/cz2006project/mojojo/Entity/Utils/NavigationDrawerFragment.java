@@ -122,8 +122,7 @@ public class NavigationDrawerFragment extends Fragment {
                 selectItem(position);}
         });
         mDrawerListView.setAdapter(new NavigationDrawerAdapter(new String[]{
-                "Appointments",
-                "Search",
+                "Leaves",
                 "My Profile",
                 "Log Out"
         }));
@@ -347,7 +346,7 @@ public class NavigationDrawerFragment extends Fragment {
 
             if (convertView == null) {
                 LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                rowView = inflater.inflate(R.layout.fragment_main_navigationdrawer, null);
+                rowView = inflater.inflate(R.layout.row_navigation_drawer, null);
             } else {
                 rowView = convertView;
             }
@@ -355,19 +354,17 @@ public class NavigationDrawerFragment extends Fragment {
            /* TextView ProfileName = (TextView) rowView.findViewById(R.id.ProfileName);
             ProfileName.setText(mCategoryMap[pos]);*/
 
-            ImageView navigationIcon = (ImageView) rowView.findViewById(R.id.icon);
-            TextView navigationTitle = (TextView) rowView.findViewById(R.id.title);
+            ImageView navigationIcon = (ImageView) rowView.findViewById(R.id.icon_navigation);
+            TextView navigationTitle = (TextView) rowView.findViewById(R.id.title_navigation);
 
             navigationTitle.setText(mCategoryMap[pos]);
             //navigationTitle.setTextColor(Color.WHITE);
             navigationIcon.setBackgroundResource(R.drawable.ic_launcher);
 
             String s = mCategoryMap[pos];
-            if (s.equals("Appointments")) {
+            if (s.equals("Leaves")) {
                 navigationIcon.setBackgroundResource(R.drawable.ic_action_appointment);
 
-            } else if (s.equals("Search")) {
-                navigationIcon.setBackgroundResource(R.drawable.ic_action_search);
 
             } else if (s.equals("My Profile")) {
                 navigationIcon.setBackgroundResource(R.drawable.ic_action_myprofile);

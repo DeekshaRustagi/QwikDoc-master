@@ -48,8 +48,10 @@ import java.util.List;
  * Fragment for the user signup screen.
  */
 public class ParseSignupFragment extends ParseLoginFragmentBase implements OnClickListener, AdapterView.OnItemLongClickListener {
+
     public static final String USERNAME = "com.parse.ui.ParseSignupFragment.USERNAME";
     public static final String PASSWORD = "com.parse.ui.ParseSignupFragment.PASSWORD";
+
     static View v;
     private EditText usernameField;
     private EditText passwordField;
@@ -63,7 +65,7 @@ public class ParseSignupFragment extends ParseLoginFragmentBase implements OnCli
     private CheckBox reminderByEmail;
     private TextView reminderText;
 
-    private static HashMap<String, String> User;
+    private static HashMap<String, String> users;
     private ParseOnLoginSuccessListener onLoginSuccessListener;
 
     ImageButton setDate;
@@ -77,7 +79,7 @@ public class ParseSignupFragment extends ParseLoginFragmentBase implements OnCli
 
 
     public void onCreate(Bundle savedInstanceState) {
-        user = new ParseUser();
+        users = new HashMap<>();
         super.onCreate(savedInstanceState);
     }
 
