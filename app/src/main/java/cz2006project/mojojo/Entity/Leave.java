@@ -29,32 +29,31 @@ public class Leave extends ParseObject {
         put("Teacher", teacher);
 
     }
-    public void setReason(ParseObject reason) {
-        put("Reason", reason);
-
-    }
-
-    public void setType(ParseObject type) {
-        put("LeaveType", type);
-
-    }
-    public void setDate(ParseObject date) {
-        put("LeaveDate", date);
-
-    }
 
     public ParseObject getteacher() {
 
         return getParseObject("Teacher");
     }
+    public void setReason(ParseObject reason) {
+        put("Reason", reason);
 
+    }
     public ParseObject getReason() {
         return getParseObject("Reason");
     }
 
 
+    public void setType(ParseObject type) {
+        put("LeaveType", type);
+
+    }
     public ParseObject getType(){
         return getParseObject("LeaveType");}
+
+    public void setDate(ParseObject date) {
+        put("LeaveDate", date);
+
+    }
 
     public ParseObject getdate(){return getParseObject("LeaveDate");}
 

@@ -8,7 +8,7 @@ import java.util.List;
 
 
 @ParseClassName("Act")
-public class Act extends ParseObject {
+public class   Act extends ParseObject {
 
     public Act() {
 

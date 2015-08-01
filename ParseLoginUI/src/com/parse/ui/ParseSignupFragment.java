@@ -51,7 +51,7 @@ public class ParseSignupFragment extends ParseLoginFragmentBase implements OnCli
 
     public static final String USERNAME = "com.parse.ui.ParseSignupFragment.USERNAME";
     public static final String PASSWORD = "com.parse.ui.ParseSignupFragment.PASSWORD";
-
+    public static final String NAME = "com.parse.ui.ParseSignupFragment.NAME";
     static View v;
     private EditText usernameField;
     private EditText passwordField;
@@ -98,6 +98,7 @@ public class ParseSignupFragment extends ParseLoginFragmentBase implements OnCli
         Bundle args = new Bundle(configOptions);
         args.putString(ParseSignupFragment.USERNAME, username);
         args.putString(ParseSignupFragment.PASSWORD, password);
+
         signupFragment.setArguments(args);
         return signupFragment;
     }

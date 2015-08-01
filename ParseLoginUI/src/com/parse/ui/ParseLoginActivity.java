@@ -140,7 +140,7 @@ public class ParseLoginActivity extends FragmentActivity implements
    * Called when the user clicked the sign up button on the login form.
    */
   @Override
-  public void onSignUpClicked(String username, String password) {
+public void onSignUpClicked(String username, String password) {
     // Show the signup form, but keep the transaction on the back stack
     // so that if the user clicks the back button, they are brought back
     // to the login form.

@@ -4,11 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="main.java.cz2006project.mojojo.Boundary.Activities.ListActivityFragment">
+    tools:context="main.java.cz2006project.mojojo.Boundary.Activities.UpcomingActivityFragment"
 
 
         android:id="@+id/activity_main_list"
-        android:layout_width="fill_parent"
+        >
     <LinearLayout
         android:layout_height="fill_parent"
         android:orientation="vertical"

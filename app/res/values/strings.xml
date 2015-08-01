@@ -36,7 +36,7 @@
     <string name="title_activity_main">QwikDoc</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="qwiksearch">QwikSearch</string>
+    <string name="Activity">activity</string>
     <string name="logout">Log Out</string>
     <string name="profile">My Profile</string>
     <string name="leaves">Leaves</string>

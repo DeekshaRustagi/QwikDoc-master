@@ -325,7 +325,7 @@ public class UpcomingLeaveFragment extends Fragment {
                 "Leave");
 
         if (check_my_leaves) {
-            query.whereEqualTo("Teacher", ParseUser.getCurrentUser().getString("username"));
+            query.whereEqualTo("Teacher", ParseUser.getCurrentUser().getString("name"));
             Calendar currentDate = Calendar.getInstance();
             Date current = currentDate.getTime();
             query.whereGreaterThanOrEqualTo("Date", current);

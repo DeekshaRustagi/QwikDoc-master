@@ -123,6 +123,7 @@ public class NavigationDrawerFragment extends Fragment {
         });
         mDrawerListView.setAdapter(new NavigationDrawerAdapter(new String[]{
                 "Leaves",
+                "Activity",
                 "My Profile",
                 "Log Out"
         }));
@@ -366,7 +367,11 @@ public class NavigationDrawerFragment extends Fragment {
                 navigationIcon.setBackgroundResource(R.drawable.ic_action_appointment);
 
 
-            } else if (s.equals("My Profile")) {
+            }
+            else if (s.equals("Activity")) {
+                navigationIcon.setBackgroundResource(R.drawable.ic_action_appointment);
+
+            }else if (s.equals("My Profile")) {
                 navigationIcon.setBackgroundResource(R.drawable.ic_action_myprofile);
 
             } else if (s.equals("Log Out")) {

@@ -58,4 +58,4 @@
         android:text="@string/com_parse_ui_forgot_password_button_label"
         android:textColor="#ff2322ff" />
 </LinearLayout>
-<!-- From: file:/C:/Users/Deeksha/AndroidStudioProjects/QwikDoc-master/ParseLoginUI/res/layout/com_parse_ui_parse_login_form.xml -->
+<!-- From: file:/C:/Users/Deeksha/AndroidStudioProjects/QwikDoc/ParseLoginUI/res/layout/com_parse_ui_parse_login_form.xml -->

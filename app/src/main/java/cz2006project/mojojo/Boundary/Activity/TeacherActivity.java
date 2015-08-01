@@ -19,6 +19,8 @@ package main.java.cz2006project.mojojo.Boundary.Activity;
         import cz2006project.mojojo.R;
         import main.java.cz2006project.mojojo.Boundary.Account.ProfileFragment;
 
+        import main.java.cz2006project.mojojo.Boundary.Activities.ActivityFragment;
+        import main.java.cz2006project.mojojo.Boundary.Activities.AddActivityFragment;
         import main.java.cz2006project.mojojo.Boundary.Leaves.LeaveFragment;
 
         import main.java.cz2006project.mojojo.Application.SampleApplication;
@@ -37,7 +39,7 @@ package main.java.cz2006project.mojojo.Boundary.Activity;
  * @since   2014-03-31
  */
 
-public class TeacherActivity extends ActionBarActivity
+public class  TeacherActivity extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
 
     public static final String TAG = "TeacherActivity";
@@ -123,15 +125,21 @@ public class TeacherActivity extends ActionBarActivity
                         .replace(R.id.container, LeaveFragment.newInstance())
                         .commit();
                 break;
-
             case 1:
+                if (DEBUG) Log.d(TAG, "Activitiy fragment");
+                mTitle = "Activity";
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, new ActivityFragment())
+                        .commit();
+                break;
+            case 2:
                 if (DEBUG) Log.d(TAG, "myprofile fragment");
                 mTitle = "Profile";
                 fragmentManager.beginTransaction()
                         .replace(R.id.container, new ProfileFragment())
                         .commit();
                 break;
-            case 2:
+            case 3:
                 if (DEBUG) Log.d(TAG, "logout");
                 new AlertDialog.Builder(this)
                         .setMessage("Are you sure you want to exit?")
@@ -164,11 +172,13 @@ public class TeacherActivity extends ActionBarActivity
 
     public void onSectionAttached(int number) {
         switch (number) {
-
             case 1:
-                mTitle = getString(R.string.profile);
+                mTitle = "Activity";
                 break;
             case 2:
+                mTitle = getString(R.string.profile);
+                break;
+            case 3:
                 mTitle = getString(R.string.logout);
                 break;
 
