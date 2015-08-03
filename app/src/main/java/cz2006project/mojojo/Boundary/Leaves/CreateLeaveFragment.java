@@ -214,12 +214,18 @@ return v;
 
      public void addInput() {
          Log.d("deek1","flag3");
-         leaves.put(ParseTables.Leave.TEACHER,((EditText)v.findViewById(R.id.teacher)).getText()+"");
+       /*  leaves.put(ParseTables.Leave.TEACHER,((EditText)v.findViewById(R.id.teacher)).getText()+"");
          //leaves.put(ParseTables.Leave.TEACHER, ParseUser.getCurrentUser().getString("name"));
          leaves.put(ParseTables.Leave.LEAVETYPE, typespinner.getSelectedItem().toString());
          Log.d("put type", "flag2");
          leaves.put(ParseTables.Leave.REASON, ((MaterialEditText) v.findViewById(R.id.reason)).getText()+"");
-         leaves.put(ParseTables.Leave.LEAVEDATE, calendar.getTime());
+         leaves.put(ParseTables.Leave.LEAVEDATE, calendar.getTime());*/
+         ParseObject leaves = new ParseObject("Leave");
+        leaves.put("Teacher", ((EditText)v.findViewById(R.id.teacher)).getText());
+         leaves.put("LeaveType", ((MaterialEditText) v.findViewById(R.id.reason)).getText());
+         leaves.put("LeaveDate", calendar.getTime());
+         leaves.put("Reason", typespinner.getSelectedItem().toString());
+         leaves.saveInBackground();
 
      }
 
