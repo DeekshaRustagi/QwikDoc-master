@@ -159,9 +159,8 @@ public class UpcomingLeaveFragment extends Fragment {
         @Override
         public void onBindViewHolder(final ViewHolder holder, int position) {
 
-            holder.teacher.setText("Teacher: " + (String) leaves.get(position).get(ParseTables.Leave.TEACHER));
             holder.type.setText("Type of Leave: " + (String) leaves.get(position).get(ParseTables.Leave.LEAVETYPE));
-            holder.leave_date.setText("Leave Date:" + (String)leaves.get(position).get(ParseTables.Leave.LEAVEDATE));
+            holder.leave_date.setText(leaves.get(position).get(ParseTables.Leave.LEAVEDATE).toString());
             holder.reason.setText((String)leaves.get(position).get(ParseTables.Leave.REASON));
 
 
@@ -222,7 +221,6 @@ public class UpcomingLeaveFragment extends Fragment {
         public class ViewHolder extends RecyclerView.ViewHolder {
 
             TextView type;
-            TextView teacher;
             RelativeLayout expanded_area;
             TextView reason;
             TextView leave_date;
@@ -236,7 +234,6 @@ public class UpcomingLeaveFragment extends Fragment {
             public ViewHolder(View itemView) {
                 super(itemView);
                 this.type = (TextView) itemView.findViewById(R.id.leave_type);
-                this.teacher = (TextView) itemView.findViewById(R.id.teacher);
                 this.expanded_area = (RelativeLayout) itemView.findViewById(R.id.expanded_area);
                 this.reason = (TextView) itemView.findViewById(R.id.reason);
                 this.leave_date = (TextView) itemView.findViewById(R.id.leave_date);
@@ -328,7 +325,7 @@ public class UpcomingLeaveFragment extends Fragment {
             query.whereEqualTo("Teacher", ParseUser.getCurrentUser().getString("name"));
             Calendar currentDate = Calendar.getInstance();
             Date current = currentDate.getTime();
-            query.whereGreaterThanOrEqualTo("Date", current);
+            query.whereGreaterThanOrEqualTo("LeaveDate", current);
         }
         query.findInBackground(new FindCallback<ParseObject>() {
             @Override

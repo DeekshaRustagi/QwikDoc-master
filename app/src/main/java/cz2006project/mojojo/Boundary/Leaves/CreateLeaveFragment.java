@@ -219,7 +219,6 @@ return v;
          leaves.put(ParseTables.Leave.REASON, ((MaterialEditText) v.findViewById(R.id.reason)).getText()+"");
          leaves.put(ParseTables.Leave.LEAVEDATE, calendar.getTime());*/
          leaves.put(ParseTables.Leave.TEACHER, ParseUser.getCurrentUser().getString("name"));
-         leaves.put("Teacher", ((EditText)v.findViewById(R.id.teacher)).getText().toString());
          leaves.put("Reason", ((MaterialEditText) v.findViewById(R.id.reason)).getText().toString());
          //leaves.put("LeaveDate", calendar.getTime());
          leaves.put("LeaveType", typespinner.getSelectedItem().toString());

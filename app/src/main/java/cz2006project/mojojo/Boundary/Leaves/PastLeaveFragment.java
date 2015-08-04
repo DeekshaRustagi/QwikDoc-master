@@ -341,7 +341,7 @@ public class PastLeaveFragment extends Fragment {
             query.whereEqualTo("Teacher", ParseUser.getCurrentUser().getString("name"));
             Calendar currentDate = Calendar.getInstance();
             Date current = currentDate.getTime();
-            query.whereLessThan("Date", current);
+            query.whereLessThan("LeaveDate", current);
         }
         query.findInBackground(new FindCallback<ParseObject>() {
             @Override
