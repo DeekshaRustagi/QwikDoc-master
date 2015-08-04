@@ -49,7 +49,6 @@ public class CreateLeaveFragment extends Fragment {
     private Spinner typespinner;
     public static int hourTest, minuteTest, yearTest, monthTest, dayTest;
     public static Calendar calendar;
-    EditText teacher;
 
     private static HashMap<String, Object> leaves;
     ImageButton setDate;
@@ -87,7 +86,6 @@ public class CreateLeaveFragment extends Fragment {
         v = inflater.inflate(R.layout.fragment_createleave, container, false);
         create = (Button) v.findViewById(R.id.submit_button);
         setDate = (ImageButton) v.findViewById(R.id.date_picker);
-        teacher = (EditText) v.findViewById(R.id.teacher);
         typespinner = (Spinner) v.findViewById(R.id.typespinner);
         ArrayAdapter adapter2 = ArrayAdapter.createFromResource(getActivity(),
                 R.array.leave_type_array, android.R.layout.simple_spinner_item);
@@ -220,12 +218,11 @@ return v;
          Log.d("put type", "flag2");
          leaves.put(ParseTables.Leave.REASON, ((MaterialEditText) v.findViewById(R.id.reason)).getText()+"");
          leaves.put(ParseTables.Leave.LEAVEDATE, calendar.getTime());*/
-         ParseObject leaves = new ParseObject("Leave");
-        leaves.put("Teacher", ((EditText)v.findViewById(R.id.teacher)).getText());
-         leaves.put("LeaveType", ((MaterialEditText) v.findViewById(R.id.reason)).getText());
-         leaves.put("LeaveDate", calendar.getTime());
-         leaves.put("Reason", typespinner.getSelectedItem().toString());
-         leaves.saveInBackground();
+         leaves.put(ParseTables.Leave.TEACHER, ParseUser.getCurrentUser().getString("name"));
+         leaves.put("Teacher", ((EditText)v.findViewById(R.id.teacher)).getText().toString());
+         leaves.put("Reason", ((MaterialEditText) v.findViewById(R.id.reason)).getText().toString());
+         //leaves.put("LeaveDate", calendar.getTime());
+         leaves.put("LeaveType", typespinner.getSelectedItem().toString());
 
      }
 
@@ -268,11 +265,11 @@ return v;
 
          calendar.set(yearTest, monthTest, dayTest, hourTest, minuteTest);
          leave.put(ParseTables.Leave.LEAVEDATE, calendar.getTime());
-         leave.put(ParseTables.Leave.LEAVEDATE, leave.get(ParseTables.Leave.LEAVEDATE));
-         leave.put(ParseTables.Leave.LEAVETYPE, leave.get(ParseTables.Leave.LEAVETYPE));
+         leave.put(ParseTables.Leave.LEAVEDATE, leaves.get(ParseTables.Leave.LEAVEDATE));
+         leave.put(ParseTables.Leave.LEAVETYPE, leaves.get(ParseTables.Leave.LEAVETYPE));
          Log.d("deek","flag1");
-         leave.put(ParseTables.Leave.REASON, leave.get(ParseTables.Leave.REASON));
-         leave.put(ParseTables.Leave.TEACHER, leave.get(ParseTables.Leave.TEACHER));
+         leave.put(ParseTables.Leave.REASON, leaves.get(ParseTables.Leave.REASON));
+         leave.put(ParseTables.Leave.TEACHER, leaves.get(ParseTables.Leave.TEACHER));
 
 
          leave.saveInBackground(new SaveCallback() {

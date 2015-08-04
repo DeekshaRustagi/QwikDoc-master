@@ -19,4 +19,4 @@
         android:layout_height="wrap_content"
         android:layout_weight="0.5" />
 </LinearLayout>
-<!-- From: file:/C:/Users/Deeksha/AndroidStudioProjects/QwikDoc/ParseLoginUI/res/layout/com_parse_ui_parse_login_help_fragment.xml --><!-- From: file:/C:/Users/Deeksha/AndroidStudioProjects/QwikDoc/ParseLoginUI/build/intermediates/bundles/debug/res/layout/com_parse_ui_parse_login_help_fragment.xml -->
+<!-- From: file:/Users/macbook/Documents/QwikDoc-master/ParseLoginUI/res/layout/com_parse_ui_parse_login_help_fragment.xml --><!-- From: file:/Users/macbook/Documents/QwikDoc-master/ParseLoginUI/build/intermediates/bundles/debug/res/layout/com_parse_ui_parse_login_help_fragment.xml -->
