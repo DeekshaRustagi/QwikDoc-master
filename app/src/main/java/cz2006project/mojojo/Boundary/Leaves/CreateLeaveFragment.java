@@ -263,7 +263,7 @@ return v;
 
          Leave leave = new Leave();
 
-         calendar.set(yearTest, monthTest, dayTest, hourTest, minuteTest);
+         calendar.set(yearTest, monthTest, dayTest);
          leave.put(ParseTables.Leave.LEAVEDATE, calendar.getTime());
          leave.put(ParseTables.Leave.LEAVEDATE, leaves.get(ParseTables.Leave.LEAVEDATE));
          leave.put(ParseTables.Leave.LEAVETYPE, leaves.get(ParseTables.Leave.LEAVETYPE));
@@ -302,7 +302,7 @@ return v;
              monthTest = monthOfYear - 1;
              dayTest = dayOfMonth;
              calendar = Calendar.getInstance();
-             calendar.set(yearTest, monthTest, dayTest, hourTest, minuteTest);
+             calendar.set(yearTest, monthTest, dayTest);
              leaves.put(ParseTables.Leave.LEAVEDATE, calendar.getTime());
 
 

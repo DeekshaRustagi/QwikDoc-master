@@ -49,13 +49,13 @@ package main.java.cz2006project.mojojo.Boundary.Activity;
  * The Main Activity is the starting point of the application. It starts the Parse Login Activity
  * if the user is not already logged into QwikDoc or starts the PatientActivity if the user is
  * already logged into QwikDoc.
+ * <p/>
+ * <p/>
+ * <p/>
  *
- *
- * <p>
- *
- * @author  Srishti Lal
+ * @author Srishti Lal
  * @version 1.0
- * @since   2014-03-31
+ * @since 2014-03-31
  */
 
 public class MainActivity extends Activity {
@@ -66,22 +66,21 @@ public class MainActivity extends Activity {
     String newline = System.getProperty("line.separator");
 
 
-    /**Starts the patient activity for the user if the user type is Patient, otherwise redirects user back to
+    /**
+     * Starts the patient activity for the user if the user type is Patient, otherwise redirects user back to
      * the login page.
-     *
      */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if (currentUser != null)  {
+        if (currentUser != null) {
 
             Intent teacherIntent = new Intent(this, TeacherActivity.class);
             startActivity(teacherIntent);
 
-            sendMail();
-
+            //sendMail();
 
 
         } else {
@@ -97,7 +96,6 @@ public class MainActivity extends Activity {
     /**
      * Starts the patient activity for the user if the user type is Patient, otherwise redirects user back to
      * the login page.
-     *
      */
 
     @Override
@@ -107,15 +105,13 @@ public class MainActivity extends Activity {
         currentUser = ParseUser.getCurrentUser();
 
 
-
-        if (currentUser != null ) {
+        if (currentUser != null) {
 
             Intent teacherIntent = new Intent(this, TeacherActivity.class);
             startActivity(teacherIntent);
 
-            sendMail();
-        }
-        else {
+            //sendMail();
+        } else {
             ParseLoginBuilder loginBuilder = new ParseLoginBuilder(
                     MainActivity.this);
             startActivityForResult(loginBuilder.build(), LOGIN_REQUEST);
@@ -123,8 +119,6 @@ public class MainActivity extends Activity {
 
 
     }
-
-
 
 
     @Override
@@ -143,100 +137,102 @@ public class MainActivity extends Activity {
      *
      */
 
-    public void sendMail() {
-
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("Leave");
-        query.findInBackground(new FindCallback<ParseObject>() {
-            public void done(List<ParseObject> leaveList, ParseException e) {
-                if (e == null) {
-                    //Log.d("score", "Retrieved " + appointmentList.size() + " appointments");
-                    for (final ParseObject leave : leaveList) {
-                        Date leaveDate = leave.getDate("Date");
-                        Boolean ReminderSent = leave.getBoolean("ReminderSent");
-                        if (ReminderSent == false) {
-
-                            Calendar cal = Calendar.getInstance();
-                            Calendar cal1 = Calendar.getInstance();
-                            //Date dt2 = cal1.getTime();
-
-                            cal1.set(Calendar.YEAR, Calendar.MONTH, Calendar.DATE+ 1, Calendar.HOUR_OF_DAY, Calendar.MINUTE);
-                            Date date = cal.getTime();
-                            long duration  = leaveDate.getTime() - date.getTime();
-                            long diffinHours = TimeUnit.MILLISECONDS.toHours(duration);
-
-
-                            if (diffinHours <= 24) {
-                                teacher = leave.getString("teacher");
-
-
-                                ParseQuery<ParseUser> pquery = ParseUser.getQuery();
-                                pquery.whereEqualTo("name", teacher);
-                                pquery.getFirstInBackground(new GetCallback<ParseUser>() {
-                                    public void done(final ParseUser teacher, ParseException e) {
-                                        if (e == null) {
-
-
-                                            try {
-                                                SmsManager smsManager = SmsManager.getDefault();
-                                                smsManager.sendTextMessage(teacher.getString("contactnumber"), null, "LEAVE REMINDER!", null, null);
-
-                                                leave.put("ReminderSent", true);
-                                                leave.saveInBackground();
-
-
-                                            } catch (Exception ex) {
-
-                                                ex.printStackTrace();
-
-                                            }
-
-
-
-                                            Map<String, String> params = new HashMap<>();
-                                            params.put("text", "Dear " + teacher.getString("name") + newline + newline + "Reminder for your upcoming leave:" + newline + "Teacher "  + leave.getString("Teacher")  + newline + "Date: " + leave.getDate("LeaveDate") + newline );
-                                            params.put("subject", "Leave Reminder for " + teacher.getString("name"));
-                                            params.put("fromEmail", "qwikdoc@hotmail.com");
-                                            params.put("fromName", "HELPGURU");
-                                            params.put("toEmail", teacher.getEmail());
-
-                                            params.put("toName", teacher.getString("" +
-                                                    "name"));
-
-
-                                            ParseCloud.callFunctionInBackground("sendMail", params, new FunctionCallback<Object>() {
-                                                @Override
-                                                public void done(Object response, ParseException exc) {
-                                                    leave.put("ReminderSent", true);
-                                                    leave.saveInBackground();
-
-
-                                                }
-
-
-                                            });
-
-                                        } else {
-
-                                        }
-
-                                    }
-
-                                });
-                            }
-
-                        }
-
-
-                    }
-
-
-                }else {
-                }
-            }
-        });
-    }
-
-
+//    public void sendMail() {
+//
+//        ParseQuery<ParseObject> query = ParseQuery.getQuery("Leave");
+//        query.findInBackground(new FindCallback<ParseObject>() {
+//            public void done(List<ParseObject> leaveList, ParseException e) {
+//                if (e == null) {
+//                    //Log.d("score", "Retrieved " + appointmentList.size() + " appointments");
+//                    for (final ParseObject leave : leaveList) {
+//                        Date leaveDate = leave.getDate("Date");
+//                        Boolean ReminderSent = leave.getBoolean("ReminderSent");
+//                        if (ReminderSent == false) {
+//
+//                            Calendar cal = Calendar.getInstance();
+//                            Calendar cal1 = Calendar.getInstance();
+//                            //Date dt2 = cal1.getTime();
+//
+//                            cal1.set(Calendar.YEAR, Calendar.MONTH, Calendar.DATE+ 1, Calendar.HOUR_OF_DAY, Calendar.MINUTE);
+//                            Date date = cal.getTime();
+//                            long duration  = leaveDate.getTime() - date.getTime();
+//                            long diffinHours = TimeUnit.MILLISECONDS.toHours(duration);
+//
+//
+//                            if (diffinHours <= 24) {
+//                                teacher = leave.getString("teacher");
+//
+//
+//                                ParseQuery<ParseUser> pquery = ParseUser.getQuery();
+//                                pquery.whereEqualTo("name", teacher);
+//                                pquery.getFirstInBackground(new GetCallback<ParseUser>() {
+//                                    public void done(final ParseUser teacher, ParseException e) {
+//                                        if (e == null) {
+//
+//
+//                                            try {
+//                                                SmsManager smsManager = SmsManager.getDefault();
+//                                                smsManager.sendTextMessage(teacher.getString("contactnumber"), null, "LEAVE REMINDER!", null, null);
+//
+//                                                leave.put("ReminderSent", true);
+//                                                leave.saveInBackground();
+//
+//
+//                                            } catch (Exception ex) {
+//
+//                                                ex.printStackTrace();
+//
+//                                            }
+//
+//
+//
+//                                            Map<String, String> params = new HashMap<>();
+//                                            params.put("text", "Dear " + teacher.getString("name") + newline + newline + "Reminder for your upcoming leave:" + newline + "Teacher "  + leave.getString("Teacher")  + newline + "Date: " + leave.getDate("LeaveDate") + newline );
+//                                            params.put("subject", "Leave Reminder for " + teacher.getString("name"));
+//                                            params.put("fromEmail", "qwikdoc@hotmail.com");
+//                                            params.put("fromName", "HELPGURU");
+//                                            params.put("toEmail", teacher.getEmail());
+//
+//                                            params.put("toName", teacher.getString("" +
+//                                                    "name"));
+//
+//
+//                                            ParseCloud.callFunctionInBackground("sendMail", params, new FunctionCallback<Object>() {
+//                                                @Override
+//                                                public void done(Object response, ParseException exc) {
+//                                                    leave.put("ReminderSent", true);
+//                                                    leave.saveInBackground();
+//
+//
+//                                                }
+//
+//
+//                                            });
+//
+//                                        } else {
+//
+//                                        }
+//
+//                                    }
+//
+//                                });
+//                            }
+//
+//                        }
+//
+//
+//                    }
+//
+//
+//                }else {
+//                }
+//            }
+//        });
+//    }
 
 
 }
+
+
+
+
