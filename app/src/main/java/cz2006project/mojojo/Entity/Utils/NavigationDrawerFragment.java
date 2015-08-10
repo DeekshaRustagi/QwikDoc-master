@@ -53,7 +53,7 @@ public class NavigationDrawerFragment extends Fragment {
     private static final String PREF_USER_LEARNED_DRAWER = "navigation_drawer_learned";
 
     /**
-     * A pointer to the current callbacks instance (the Act).
+     * A pointer to the current callbacks instance (the Activity).
      */
     private NavigationDrawerCallbacks mCallbacks;
 
@@ -123,6 +123,7 @@ public class NavigationDrawerFragment extends Fragment {
         });
         mDrawerListView.setAdapter(new NavigationDrawerAdapter(new String[]{
                 "Leaves",
+                "Timetable",
                 "Activity",
                 "My Profile",
                 "Log Out"
@@ -161,7 +162,7 @@ public class NavigationDrawerFragment extends Fragment {
         // ActionBarDrawerToggle ties together the the proper interactions
         // between the navigation drawer and the action bar app icon.
         mDrawerToggle = new ActionBarDrawerToggle(
-                getActivity(),                    /* host Act */
+                getActivity(),                    /* host Activity */
                 mDrawerLayout,                    /* DrawerLayout object */
                /* R.drawable.ic_drawer,   */          /* nav drawer image to replace 'Up' caret */
                 R.string.navigation_drawer_open,  /* "open drawer" description for accessibility */
@@ -232,7 +233,7 @@ public class NavigationDrawerFragment extends Fragment {
         try {
             mCallbacks = (NavigationDrawerCallbacks) activity;
         } catch (ClassCastException e) {
-            throw new ClassCastException("Act must implement NavigationDrawerCallbacks.");
+            throw new ClassCastException("Activity must implement NavigationDrawerCallbacks.");
         }
     }
 
@@ -366,8 +367,12 @@ public class NavigationDrawerFragment extends Fragment {
             if (s.equals("Leaves")) {
                 navigationIcon.setBackgroundResource(R.drawable.ic_action_appointment);
 
+            }
+           else if (s.equals("Timetable")) {
+                navigationIcon.setBackgroundResource(R.drawable.ic_action_appointment);
 
             }
+
             else if (s.equals("Activity")) {
                 navigationIcon.setBackgroundResource(R.drawable.ic_action_appointment);
 

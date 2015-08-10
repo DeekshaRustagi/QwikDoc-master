@@ -11,6 +11,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -161,8 +162,8 @@ public class UpcomingLeaveFragment extends Fragment {
 
             holder.type.setText("Type of Leave: " + (String) leaves.get(position).get(ParseTables.Leave.LEAVETYPE));
             holder.leave_date.setText(leaves.get(position).get(ParseTables.Leave.LEAVEDATE).toString());
-            holder.reason.setText((String)leaves.get(position).get(ParseTables.Leave.REASON));
-
+            holder.reason.setText("Reason:" + (String) leaves.get(position).get(ParseTables.Leave.REASON));
+            holder.teacher.setText("Teacher:"+(String)(ParseUser.getCurrentUser().getString("name")));
 
 
             if (check_my_leaves) {
@@ -224,7 +225,7 @@ public class UpcomingLeaveFragment extends Fragment {
             RelativeLayout expanded_area;
             TextView reason;
             TextView leave_date;
-
+            TextView teacher;
             Button leave_delete;
             Button leave_changedate;
 
@@ -239,9 +240,8 @@ public class UpcomingLeaveFragment extends Fragment {
                 this.leave_date = (TextView) itemView.findViewById(R.id.leave_date);
                 this.leave_delete = (Button) itemView.findViewById(R.id.leave_delete);
                 this.leave_changedate = (Button) itemView.findViewById(R.id.leave_changedate);
-
-                //this.leave_change = (Button) itemView.findViewById(R.id.leave_change);
-
+//this.leave_change = (Button) itemView.findViewById(R.id.leave_change);
+                this.teacher=(TextView)itemView.findViewById(R.id.teacher);
 
                 leave_delete.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -261,7 +261,7 @@ public class UpcomingLeaveFragment extends Fragment {
                                 int day = calendar.get(Calendar.DATE);
                                 calendar.set(year, month, day, 0, 0, 0);
                                 Date BegginingOfToday = calendar.getTime();
-                                if (lev.getDate("Date").after(BegginingOfToday)) {
+                                if (lev.getDate("LeaveDate").after(BegginingOfToday)) {
                                     lev.deleteInBackground(new DeleteCallback() {
                                         @Override
                                         public void done(ParseException e) {
@@ -382,16 +382,17 @@ public class UpcomingLeaveFragment extends Fragment {
         @Override
         public void onDateSet(android.widget.DatePicker view, int year, int monthOfYear, int dayOfMonth) {
 
-            Date date2 = lev.getDate("Date");
+            Date date2 = lev.getDate("LeaveDate");
             Calendar calendar = GregorianCalendar.getInstance();
 
             calendar.setTime(date2);
+
             hourtest = calendar.get(Calendar.HOUR_OF_DAY);
             minutetest = calendar.get(Calendar.MINUTE);
 
             calendar.set(year, monthOfYear, dayOfMonth, hourtest, minutetest);
 
-            lev.put("Date", calendar.getTime());
+            lev.put("LeaveDate", calendar.getTime());
             lev.saveInBackground();
         }
 

@@ -56,7 +56,7 @@ public class ListActivityFragment extends Fragment {
     LinearLayout ActivityMainLayout;
     ScrollView emptyActivity;
 
-    private static HashMap<String, Object> Activity;
+   // private static HashMap<String, Object> Activity;
     public static ParseObject act;
     public static int yeartest, monthtest, daytest, hourtest, minutetest;
 
@@ -89,7 +89,7 @@ public class ListActivityFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Activity= new HashMap<>();
+        //Activity= new HashMap<>();
         setHasOptionsMenu(true);
 
         if (this.getArguments() != null) {
@@ -134,10 +134,10 @@ public class ListActivityFragment extends Fragment {
     public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.ViewHolder> implements View.OnClickListener {
 
         private int expandedPosition = -1;
-        private List<ParseObject> Activity;
+        private List<ParseObject> activity;
 
         public ActivityAdapter(List<ParseObject> Activity) {
-            this.Activity = Activity;
+            this.activity = Activity;
         }
 
         /**
@@ -164,11 +164,11 @@ public class ListActivityFragment extends Fragment {
          */
         @Override
         public void onBindViewHolder(final ViewHolder holder, int position) {
-            holder.Class.setText("Class: " + (String) Activity.get(position).get(ParseTables.Activity.CLASS));
-            holder.section.setText("Section: " + (String) Activity.get(position).get(ParseTables.Activity.SECTION));
-            holder.coordinator.setText("Coordinator: " + (String) Activity.get(position).get(ParseTables.Activity.COORDINATOR));
-            holder. activity_date.setText("Activity Date:" +(String)Activity.get(position).get(ParseTables.Activity.ACTIVITYDATE));
-            holder.type.setText("Type: " + (String) Activity.get(position).get(ParseTables.Activity.ACTIVITYTYPE));
+            holder.Class.setText("Class: " + (String) activity.get(position).get(ParseTables.Activity.CLASS));
+            holder.section.setText("Section: " + (String) activity.get(position).get(ParseTables.Activity.SECTION));
+            holder.coordinator.setText("Coordinator: " + (String) activity.get(position).get(ParseTables.Activity.COORDINATOR));
+            holder. activity_date.setText("Activity Date:" +(String)activity.get(position).get(ParseTables.Activity.ACTIVITYDATE));
+            holder.type.setText("Type: " + (String) activity.get(position).get(ParseTables.Activity.ACTIVITYTYPE));
 
 
 
@@ -194,7 +194,7 @@ public class ListActivityFragment extends Fragment {
          */
         @Override
         public int getItemCount() {
-            return Activity.size();
+            return activity.size();
         }
 
         /**
@@ -266,14 +266,14 @@ public class ListActivityFragment extends Fragment {
                         builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
 
                             public void onClick(DialogInterface dialog, int which) {
-                                act = Activity.get(getPosition());
+                                act = activity.get(getPosition());
                                 Calendar calendar = Calendar.getInstance();
                                 int year = calendar.get(Calendar.YEAR);
                                 int month = calendar.get(Calendar.MONTH);
                                 int day = calendar.get(Calendar.DATE);
                                 calendar.set(year, month, day, 0, 0, 0);
                                 Date BegginingOfToday = calendar.getTime();
-                                if (act.getDate("Date").after(BegginingOfToday)) {
+                                if (act.getDate("ActivityDate").after(BegginingOfToday)) {
                                     act.deleteInBackground(new DeleteCallback() {
                                         @Override
                                         public void done(ParseException e) {
@@ -313,7 +313,7 @@ public class ListActivityFragment extends Fragment {
 
                     @Override
                     public void onClick(View v) {
-                        act = Activity.get(getPosition());
+                        act = activity.get(getPosition());
                         DatePickerFragment datePicker = new DatePickerFragment();
                         datePicker.show(getActivity().getSupportFragmentManager(), "Set Date");
 
@@ -337,7 +337,7 @@ public class ListActivityFragment extends Fragment {
             query.whereEqualTo("coordinator", ParseUser.getCurrentUser().getString("name"));
             Calendar currentDate = Calendar.getInstance();
             Date current = currentDate.getTime();
-            query.whereGreaterThanOrEqualTo("Date", current);
+            query.whereGreaterThanOrEqualTo("ActivityDate", current);
         }
         query.findInBackground(new FindCallback<ParseObject>() {
             @Override
@@ -368,7 +368,7 @@ public class ListActivityFragment extends Fragment {
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.menu_main, menu);
+        inflater.inflate(R.menu.menu_search, menu);
     }
 
     @Override
@@ -394,7 +394,7 @@ public class ListActivityFragment extends Fragment {
         @Override
         public void onDateSet(android.widget.DatePicker view, int year, int monthOfYear, int dayOfMonth) {
 
-            Date date2 =act.getDate("Date");
+            Date date2 =act.getDate("ActivityDate");
             Calendar calendar = GregorianCalendar.getInstance();
 
             calendar.setTime(date2);
@@ -403,7 +403,7 @@ public class ListActivityFragment extends Fragment {
 
             calendar.set(year, monthOfYear, dayOfMonth, hourtest, minutetest);
 
-            act.put("Date", calendar.getTime());
+            act.put("ActivityDate", calendar.getTime());
             act.saveInBackground();
         }
 

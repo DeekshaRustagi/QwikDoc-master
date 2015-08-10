@@ -41,7 +41,7 @@ import android.widget.EditText;
 import android.widget.AdapterView.OnItemSelectedListener;
 
 
-public class CreateLeaveFragment extends Fragment {
+public class  CreateLeaveFragment extends Fragment {
 
 
     Button create;

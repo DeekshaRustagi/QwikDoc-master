@@ -362,8 +362,6 @@ containing a value of this type.
         public static int com_facebook_usersettingsfragment_profile_name=0x7f0a0024;
         public static int create_account=0x7f0a0038;
         public static int date_picker=0x7f0a003d;
-        public static int doctor_branch=0x7f0a0042;
-        public static int doctor_specialty=0x7f0a0041;
         public static int facebook_login=0x7f0a0032;
         public static int helpgur=0x7f0a002e;
         public static int helpguru=0x7f0a0026;
